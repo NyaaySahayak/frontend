@@ -4,6 +4,7 @@ import char from '../Components/images/char.png';
 import { jsonData } from './data';
 import { useSpeechSynthesis } from 'react-speech-kit';
 
+
 export default function VoiceAssistant() {
   const { transcript, listening, resetTranscript, isMicrophoneAvailable, browserSupportsSpeechRecognition } = useSpeechRecognition();
   const [mytranscript, newtranscript] = useState(transcript);
@@ -22,11 +23,11 @@ export default function VoiceAssistant() {
   }
 
   function findanswer(transcript) {
-    if (jsonData.data && jsonData.data.length > 0) {
+    if (jsonData && jsonData.length > 0) {
       let maxMatchCount = 0;
       let bestMatchQuestion = null;
       const lowerCaseInput = transcript.toLowerCase();
-      for (const question of jsonData.data) {
+      for (const question of jsonData) {
         const matchCount = calculateMatchingWords(lowerCaseInput, question.question);
         if (matchCount > maxMatchCount) {
           maxMatchCount = matchCount;
