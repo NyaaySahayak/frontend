@@ -23,11 +23,11 @@ export default function VoiceAssistant() {
   }
 
   function findanswer(transcript) {
-    if (jsonData && jsonData.length > 0) {
+    if (jsonData.data && jsonData.data.length > 0) {
       let maxMatchCount = 0;
       let bestMatchQuestion = null;
       const lowerCaseInput = transcript.toLowerCase();
-      for (const question of jsonData) {
+      for (const question of jsonData.data) {
         const matchCount = calculateMatchingWords(lowerCaseInput, question.question);
         if (matchCount > maxMatchCount) {
           maxMatchCount = matchCount;
