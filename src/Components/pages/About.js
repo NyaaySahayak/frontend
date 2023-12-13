@@ -36,7 +36,7 @@ export default function About() {
           <div key= '4' className="col-lg-4 mb-4">
             <div className="card">
               <div className="card-body">
-                <h5 className="card-title">Denthony</h5>
+                <h5 className="card-title">Keshav</h5>
                 {/* <p className="card-subtitle mb-2 text-muted">{member.role}</p> */}
                 {/* <p className="card-text">{member.description}</p> */}
               </div>
