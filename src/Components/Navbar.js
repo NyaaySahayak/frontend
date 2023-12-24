@@ -40,8 +40,8 @@ function Navbar() {
               </Link>
             </li>
             <li className="nav-item mx-2">
-              <Link className="nav-link active" to="/Chatbot">
-                Chatbot
+              <Link className="nav-link active" to="/login">
+                Login
               </Link>
             </li>
           </ul>

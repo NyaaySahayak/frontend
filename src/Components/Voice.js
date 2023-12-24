@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import char from '../Components/images/char.png';
-import { jsonData } from './data';
 import { useSpeechSynthesis } from 'react-speech-kit';
 
+export default function VoiceAssistant(props) {
 
-export default function VoiceAssistant() {
-  const { transcript, listening, resetTranscript, isMicrophoneAvailable, browserSupportsSpeechRecognition } = useSpeechRecognition();
+
+  //Fetching the data from backend
+  
+  const jsonData = props.data;
+  const { transcript, listening, resetTranscript, isMicrophoneAvailable, browserSupportsSpeechRecognition } = useSpeechRecognition({onEnd: () => submit()});
   const [mytranscript, newtranscript] = useState(transcript);
   const { speak } = useSpeechSynthesis();
 
@@ -23,11 +26,11 @@ export default function VoiceAssistant() {
   }
 
   function findanswer(transcript) {
-    if (jsonData.data && jsonData.data.length > 0) {
+    if (jsonData && jsonData.length > 0) {
       let maxMatchCount = 0;
       let bestMatchQuestion = null;
       const lowerCaseInput = transcript.toLowerCase();
-      for (const question of jsonData.data) {
+      for (const question of jsonData) {
         const matchCount = calculateMatchingWords(lowerCaseInput, question.question);
         if (matchCount > maxMatchCount) {
           maxMatchCount = matchCount;
@@ -37,19 +40,19 @@ export default function VoiceAssistant() {
       if (bestMatchQuestion) {
         console.log("Answer: ", bestMatchQuestion.answer);
         newtranscript(bestMatchQuestion.answer);
-        speak({ text: bestMatchQuestion.answer});
-        
+        speak({ text: bestMatchQuestion.answer });
+
       }
       else {
         console.log("No matching answer found for the given question.");
         newtranscript("No matching answer found for the given question.");
-        speak({ text: "No matching answer found for the given question."});
+        speak({ text: "No matching answer found for the given question." });
       }
     }
     else {
       console.log("No questions found in the JSON data.");
       newtranscript("No questions found in the JSON data.");
-      speak({ text: "No questions found in the JSON data."});
+      speak({ text: "No questions found in the JSON data." });
     }
   }
 
@@ -75,7 +78,7 @@ export default function VoiceAssistant() {
     }
     else {
       findanswer(transcript);
-      
+
     }
   }
   function clicks() {
@@ -104,14 +107,14 @@ export default function VoiceAssistant() {
                 {transcript}
               </div>
               <div className="row-2 text-center position-relative" style={{ fontSize: "18px", padding: "2%", margin: "2%", height: "50vh" }} >
-                {mytranscript!=="" ? (
+                {mytranscript !== "" ? (
                   <>
                     {mytranscript}
-                    <div class="d-grid gap-2 col-2 mx-auto text-center position-absolute bottom-0 end-0">
-                      <button class="btn btn-primary" onClick={() => speak({ text: mytranscript })} type="button">Repeat</button>
+                    <div className="d-grid gap-2 col-2 mx-auto text-center position-absolute bottom-0 end-0">
+                      <button className="btn btn-primary" onClick={() => speak({ text: mytranscript })} type="button">Repeat</button>
                     </div>
                   </>
-                ):(<></>)}
+                ) : (<></>)}
               </div>
             </div>
           </div>
