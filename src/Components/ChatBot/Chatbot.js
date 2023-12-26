@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Chatbot.css'
-export default function Chatbot({data}) {
-
-  const jsonData =  data;
+export default function Chatbot(props) {
+  console.log("Component Rendered");
+  const jsonData = props.data;
+  // console.log("jas:", jsonData)
   useEffect(() => {
+    console.log("recived jsondata:",jsonData)
     const chatInput = document.querySelector(".chat-input textarea");
     const sendChatBtn = document.querySelector(".chat-input span");
     const chatbox = document.querySelector(".chatbox");
@@ -31,11 +33,17 @@ export default function Chatbot({data}) {
           matchCount++;
         }
       }
+      // console.log(matchCount)
       return matchCount;
     }
 
     function findanswer(userMessage, incomingChatLi) {
       const messageElement = incomingChatLi.querySelector("p");
+      // if (!jsonData || jsonData.length === 0) {
+      //   console.log("No questions found in the JSON data.");
+      //   // Handle this case if needed
+      //   return;
+      // }    
       if (jsonData && jsonData.length > 0) {
         let maxMatchCount = 0;
         let bestMatchQuestion = null;
@@ -61,6 +69,7 @@ export default function Chatbot({data}) {
         messageElement.textContent = "No questions found in the JSON data.";
       }
     }
+
     const generateResponse = (incomingChatLi) => {
       findanswer(userMessage, incomingChatLi);
       chatbox.scrollTop = chatbox.scrollHeight;
@@ -68,10 +77,11 @@ export default function Chatbot({data}) {
 
     const handleChat = () => {
       userMessage = chatInput.value.trim();
+      console.log("user message : ", userMessage)
+
       if (!userMessage) return;
       chatInput.value = "";
       chatInput.style.height = `${inputInitHeight}px`;
-
       chatbox.appendChild(createChatLi(userMessage, "outgoing"));
 
       setTimeout(() => {
@@ -84,27 +94,37 @@ export default function Chatbot({data}) {
     chatInput.addEventListener("input", () => {
       chatInput.style.height = `${inputInitHeight}px`;
       chatInput.style.height = `${chatInput.scrollHeight}px`;
-
-
+      // userMessage = chatInput.value.trim();
     });
-    chatInput.addEventListener("keyup", (e) => {
-      if (e.key === "Enter" && !e.shiftKey && window.innerWidth > 800) {
-        e.preventDefault();
-        handleChat();
-      }
 
-    });
+    // chatInput.addEventListener("keyup", (e) => {
+    //   if (e.key === "Enter" && !e.shiftKey && window.innerWidth > 800) {
+    //     e.preventDefault();
+    //     handleChat();
+    //   }
+
+    // });
 
     sendChatBtn.addEventListener("click", handleChat);
     chatbotToggler.addEventListener("click", () => chatbotContainer.classList.toggle("show-chatbot"));
     chatbotCloseBtn.addEventListener("click", () => document.body.classList.remove("show-chatbot"));
 
-}, [jsonData]);
+  }, [jsonData]);
+
+
+  const [toggle, setToggle] = useState(false)
+  function handleToggle() {
+    if (toggle) {
+      setToggle(false)
+    } else {
+      setToggle(true)
+    }
+  }
 
   return (
     <div>
-      <div className="chatbot-container">
-        <button className="chatbot-toggler">
+      <div className={`chatbot-container ${toggle ? "show-chatbot" : ""}`}>
+        <button className="chatbot-toggler" onClick={handleToggle}>
           <span className="material-symbols-outlined">
             mode_comment
           </span>

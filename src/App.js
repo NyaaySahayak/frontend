@@ -3,10 +3,15 @@ import React , {useState, useEffect} from 'react';
 import { Routes, Route} from "react-router-dom";
 import Navbar from './Components/Navbar';
 import VoiceAssistant from './Components/Voice';
-import Mybot from './Components/bot/Mybot';
+// import Mybot from './Components/bot/Mybot';
 import About from './Components/pages/About';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Awareness from './Components/pages/Awareness';
 import Chatbot from './Components/ChatBot/Chatbot';
+import LoginPage from './Components/pages/LoginPage';
+import PrivateRoute from './Components/advocate/PrivateRoute';
+import AdvocateDashBoard from './Components/advocate/AdvocateDashBoard';
   
 function App() {
 
@@ -33,11 +38,28 @@ function App() {
       <Chatbot data={jsonData}/>
       <Routes>
         <Route index element={<VoiceAssistant data={jsonData}/>}/>
-        <Route path='Chatbot' element={<Mybot/>}/>
         <Route path='About' element={<About/>}/>
         <Route path='Awareness' element={<Awareness/>}/>
+        <Route path='login' element={<LoginPage/>}/>
+
+        <Route path='/advocate' element={<PrivateRoute/>}>
+          <Route path='dashboard' element={<AdvocateDashBoard/>}/>
+        </Route>
       </Routes>
 
+
+
+
+      <ToastContainer position="top-right"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored" />
     </div>
   );
 }

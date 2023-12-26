@@ -9,6 +9,7 @@ export default function VoiceAssistant(props) {
   //Fetching the data from backend
   
   const jsonData = props.data;
+  console.log("jsonData: ", jsonData);
   const { transcript, listening, resetTranscript, isMicrophoneAvailable, browserSupportsSpeechRecognition } = useSpeechRecognition({onEnd: () => submit()});
   const [mytranscript, newtranscript] = useState(transcript);
   const { speak } = useSpeechSynthesis();
