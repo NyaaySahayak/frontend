@@ -122,7 +122,7 @@ export default function Chatbot(props) {
   }
 
   return (
-    <div>
+    <div style={{ position: 'fixed', top: 0, left: 0, zIndex: 9999 }}>
       <div className={`chatbot-container ${toggle ? "show-chatbot" : ""}`}>
         <button className="chatbot-toggler" onClick={handleToggle}>
           <span className="material-symbols-outlined">

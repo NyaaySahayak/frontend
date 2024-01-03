@@ -26,14 +26,28 @@ export default function LoginPage() {
         }),
       })
       const data = await response.json()
-        if (data.token) {
-          doLogin(data ,()=>{
+      if (data.token) {
+        const token = data.token;
+        const testResponse = await fetch('http://localhost:4000/test', {
+          method: 'GET',
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+        });
+        const testData = await testResponse.text();
+        if (testResponse.ok) {
+          doLogin(data, () => {
             toast.success('login successful')
           });
           navigate("/advocate/dashboard")
+          console.log("testData ===> ", testData);
         } else {
-          toast.error(data.message)
+          toast.error("Token verification failed");
         }
+      } else {
+        toast.error(data.message)
+      }
       console.log(data)
     }
   }

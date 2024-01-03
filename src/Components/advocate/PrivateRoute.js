@@ -5,12 +5,12 @@ import { isLoggedIn } from '../auth/authindex'
 const PrivateRoute = () => {
 
     if (isLoggedIn()) {
-        return <Outlet/>
+        return <Outlet />
     }
-    else{
-        return <Navigate to={"/"}/>
+    else {
+        return <Navigate to={"/"} />
     }
-  
+
 }
 
-export default PrivateRoute
+export default PrivateRoute;

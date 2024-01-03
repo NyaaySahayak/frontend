@@ -45,6 +45,7 @@ function App() {
         <Route path='/advocate' element={<PrivateRoute/>}>
           <Route path='dashboard' element={<AdvocateDashBoard/>}/>
         </Route>
+        
       </Routes>
 
 
