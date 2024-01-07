@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import EditData from './EditData';
+// import { useState } from 'react'
+// import EditData from './EditData';
 
 export default function QuestionsComponent(props) {
   let jsonData = props.jsonData;

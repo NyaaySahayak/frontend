@@ -10,7 +10,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import Awareness from './Components/pages/Awareness';
 import Chatbot from './Components/ChatBot/Chatbot';
 import LoginPage from './Components/pages/LoginPage';
-import { getCurrentUserDeatil } from './Components/auth/authindex';
 import AdvocateDashBoard from './Components/advocate/AdvocateDashBoard';
 import AdminDasboard from './Components/admin/AdminDasboard';
 import AdvocatePrivateRoute from './Components/advocate/AdvocatePrivateRoute';
@@ -18,20 +17,25 @@ import AdminPrivateRoute from './Components/admin/AdminPrivateRoute';
 import PageNotFound from './Components/PageNotFound';
 import Rights from './Components/pages/Rights';
 import Laws from './Components/pages/Laws';
+import Spinner from './Components/Spinner';
   
 function App() {
 
   const [jsonData, setJsonData] = useState([]);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
+    setLoading(true);
     const fetchData = async () => {
       try {
         const response = await fetch('http://localhost:4000/data');
         const json = await response.json();
         if (response.ok) {
           setJsonData(json);
+          setLoading(false);
         }
       } catch (error) {
         console.error("Error fetching data:", error);
+        setLoading(false);
       }
     };
     fetchData();
@@ -44,8 +48,7 @@ function App() {
   return (
     <div className="App">
       <Navbar/>
-    
-
+      {loading && <Spinner/>}
       <Chatbot data={jsonData}/>
       <Routes>
         <Route index element={<VoiceAssistant data={jsonData}/>}/>
