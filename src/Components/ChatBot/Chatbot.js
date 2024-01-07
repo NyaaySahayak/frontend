@@ -1,11 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import './Chatbot.css'
-export default function Chatbot(props) {
+export default function Chatbot() {
   console.log("Component Rendered");
-  const jsonData = props.data;
+  // const jsonData = props.data;
   // console.log("jas:", jsonData)
+  const jsonData = {
+    "data" : [
+    {
+      "question": "What areas of law does Nyaay Sahayak cover?",
+      "answer": "Nyaay Sahayak specializes in various legal areas, including but not limited to family law, criminal law, business law, and estate planning."
+    },
+    {
+      "question": "How can Nyaay Sahayak help with [specific legal issue]?",
+      "answer": "Nyaay Sahayak provides tailored assistance for a wide range of legal issues. Simply describe your situation, and our legal experts will guide you through the necessary steps and provide relevant information."
+    }]
+  }
   useEffect(() => {
-    console.log("recived jsondata:",jsonData)
+    console.log("recived jsondata:", jsonData)
     const chatInput = document.querySelector(".chat-input textarea");
     const sendChatBtn = document.querySelector(".chat-input span");
     const chatbox = document.querySelector(".chatbox");
@@ -44,11 +55,11 @@ export default function Chatbot(props) {
       //   // Handle this case if needed
       //   return;
       // }    
-      if (jsonData && jsonData.length > 0) {
+      if (jsonData.data && jsonData.data.length > 0) {
         let maxMatchCount = 0;
         let bestMatchQuestion = null;
         const lowerCaseInput = userMessage.toLowerCase();
-        for (const question of jsonData) {
+        for (const question of jsonData.data) {
           const matchCount = calculateMatchingWords(lowerCaseInput, question.question);
           if (matchCount > maxMatchCount) {
             maxMatchCount = matchCount;
@@ -109,7 +120,7 @@ export default function Chatbot(props) {
     chatbotToggler.addEventListener("click", () => chatbotContainer.classList.toggle("show-chatbot"));
     chatbotCloseBtn.addEventListener("click", () => document.body.classList.remove("show-chatbot"));
 
-  }, [jsonData]);
+  }, []);
 
 
   const [toggle, setToggle] = useState(false)
