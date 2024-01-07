@@ -2,10 +2,13 @@ import React from 'react'
 
 import { useState, useEffect } from 'react';
 import QuestionsComponent from './QuestionsComponent';
+import EditData from './EditData';
 
 export default function AdvocateDashBoard() {
 
-  const [jsonData, setJsonData] = useState(null);
+  const [jsonData, setJsonData] = useState([]);
+  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -21,12 +24,14 @@ export default function AdvocateDashBoard() {
     fetchData();
   }, []);
 
+  
+
   return (
     <div className='container-fluid my-3 '>
       <div className="container">
-        {jsonData && jsonData.map((jsonData) => (
-          <QuestionsComponent key={jsonData._id} jsonData={jsonData} />
-        ))}
+        {/* {jsonData && jsonData.map((jsonData) => ( */}
+          <QuestionsComponent  jsonData={jsonData}/>
+        {/* ))} */}
       </div>
     </div>
   )

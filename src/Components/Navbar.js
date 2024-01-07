@@ -9,12 +9,12 @@ function Navbar() {
   const [login, setLogin] = useState(false)
   const [user, setUser] = useState(undefined)
 
- 
+  let useLogin = isLoggedIn();
   useEffect(() => {
     setLogin(isLoggedIn());
     setUser(getCurrentUserDeatil())
 
-  }, [login])
+  }, [useLogin])
 
   const handleLogout = () => {
     doLogout(() => {
@@ -23,7 +23,6 @@ function Navbar() {
     })
     navigate("/")
   }
-
 
   return (
     <div>
@@ -75,12 +74,12 @@ function Navbar() {
             </div>
           </nav>
         </>
-      ) }
+      )}
       {
         login && (
           <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
             <div className="container-fluid">
-              <Link className="navbar-brand mx-auto" to="/advocate/dashboard">
+              <Link className="navbar-brand mx-auto" to={`/${user.role === "admin" ? "admin":"advocate"}/dashboard`}>
                 NYAAY SAHAYAK
               </Link>
               <button
@@ -94,9 +93,8 @@ function Navbar() {
               ></button>
               <div className="collapse navbar-collapse" id="collapsibleNavId">
                 <ul className="navbar-nav ms-auto justify-content-between">
-  
                   <li className="nav-item mx-2">
-                    <Link className="nav-link active" to="/Awareness">
+                    <Link className="nav-link active" to={`/${user.role === "admin" ? "admin":"advocate"}/dashboard`}>
                       {user.email}
                     </Link>
                   </li>
@@ -109,8 +107,8 @@ function Navbar() {
               </div>
             </div>
           </nav>
-  
-  
+
+
         )
       }
     </div>

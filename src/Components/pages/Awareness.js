@@ -1,5 +1,6 @@
 import React from 'react';
 import './Aware.css';
+import { Link } from 'react-router-dom';
 
 
 export default function Awareness() {
@@ -13,7 +14,7 @@ export default function Awareness() {
           <div className="maincards-body" id="one">
             <h1 className="maincards-title">LAWS</h1>
             <p className="maincards-info">Different laws.</p>
-            <button className="maincards-btn">KNOW MORE</button>
+            <button className="maincards-btn"><Link to={'/laws'} >KNOW MORE</Link></button>
           </div>
         </div>
       </div>
@@ -23,7 +24,7 @@ export default function Awareness() {
           <div className="maincards-body">
             <h1 className="maincards-title">RIGHTS</h1>
             <p className="maincards-info">Rights and Duties of citizens.</p>
-            <button className="maincards-btn">KNOW MORE</button>
+            <button className="maincards-btn"><Link to={'/rights'} >KNOW MORE</Link></button>
           </div>
         </div>
       </div>

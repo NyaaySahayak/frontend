@@ -10,12 +10,18 @@ import 'react-toastify/dist/ReactToastify.css';
 import Awareness from './Components/pages/Awareness';
 import Chatbot from './Components/ChatBot/Chatbot';
 import LoginPage from './Components/pages/LoginPage';
-import PrivateRoute from './Components/advocate/PrivateRoute';
+import { getCurrentUserDeatil } from './Components/auth/authindex';
 import AdvocateDashBoard from './Components/advocate/AdvocateDashBoard';
+import AdminDasboard from './Components/admin/AdminDasboard';
+import AdvocatePrivateRoute from './Components/advocate/AdvocatePrivateRoute';
+import AdminPrivateRoute from './Components/admin/AdminPrivateRoute';
+import PageNotFound from './Components/PageNotFound';
+import Rights from './Components/pages/Rights';
+import Laws from './Components/pages/Laws';
   
 function App() {
 
-  const [jsonData, setJsonData] = useState(null);
+  const [jsonData, setJsonData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -31,18 +37,32 @@ function App() {
     fetchData();
   }, []);
 
+  
 
+
+  
   return (
     <div className="App">
       <Navbar/>
+    
+
       <Chatbot data={jsonData}/>
       <Routes>
         <Route index element={<VoiceAssistant data={jsonData}/>}/>
         <Route path='About' element={<About/>}/>
         <Route path='Awareness' element={<Awareness/>}/>
         <Route path='login' element={<LoginPage/>}/>
+        <Route path='pagenotfound' element={<PageNotFound/>}/>
+        <Route path='rights' element={<Rights/>}/>
+        <Route path='laws' element={<Laws/>}/>
 
-        <Route path='/advocate' element={<PrivateRoute/>}>
+
+        //Admin Private Route
+        <Route path='/admin' element={<AdminPrivateRoute/>}>
+          <Route path='dashboard' element={<AdminDasboard />}/>
+        </Route>
+
+        <Route path='/advocate' element={<AdvocatePrivateRoute/>}>
           <Route path='dashboard' element={<AdvocateDashBoard/>}/>
         </Route>
         

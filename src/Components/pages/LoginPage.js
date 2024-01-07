@@ -35,13 +35,20 @@ export default function LoginPage() {
             "Authorization": `Bearer ${token}`
           },
         });
-        const testData = await testResponse.text();
+        // const testData = await testResponse.text();
         if (testResponse.ok) {
+          console.log("testrespone")
+
           doLogin(data, () => {
             toast.success('login successful')
           });
-          navigate("/advocate/dashboard")
-          console.log("testData ===> ", testData);
+          if (data.User.role === "advocate") {
+            navigate("/advocate/dashboard")
+            console.log("testData ===> ", data);
+          }else{
+            navigate("/admin/dashboard")
+          }
+
         } else {
           toast.error("Token verification failed");
         }
@@ -71,9 +78,7 @@ export default function LoginPage() {
           <div className="d-grid">
             <button className="btn btn-primary" type='submit' value="Login">Login</button>
           </div>
-          <div>
-            <p>Don't have an account ? <Link to={'/register'}>Register</Link></p>
-          </div>
+          
         </form>
       </div>
     </div>
