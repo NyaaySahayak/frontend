@@ -1,12 +1,11 @@
 import React from 'react'
-import {RingLoader} from 'react-spinners'
 export default function Spinner() {
-    return (
-       
-        <div class="container">
-        <div class="d-flex justify-content-center">
-          <div class="p-2 bg-transparent text-white"><RingLoader  color="#f10202" /></div>
+        return (
+
+        <div className="d-flex justify-content-center">
+                <div className="spinner-border text-info" role='status'>
+                        <span className='visually-hidden'>loading..</span>
+                </div>
         </div>
-      </div>
-    )
+        )
 }

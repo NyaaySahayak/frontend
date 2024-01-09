@@ -34,14 +34,11 @@ export default function Awareness() {
           <div className="maincards-body">
             <h1 className="maincards-title">GUIDES</h1>
             <p className="maincards-info">Related to legal documents.</p>
-            <button className="maincards-btn">KNOW MORE</button>
+            <button className="maincards-btn"><Link to={'/guides'} >KNOW MORE</Link></button>
           </div>
         </div>
       </div>
     </div>
     </div>
-
-
-
   )
 }

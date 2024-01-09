@@ -8,7 +8,7 @@ function Navbar() {
   const navigate = useNavigate();
   const [login, setLogin] = useState(false)
   const [user, setUser] = useState(undefined)
-
+  
   let useLogin = isLoggedIn();
   useEffect(() => {
     setLogin(isLoggedIn());
@@ -98,6 +98,7 @@ function Navbar() {
                       {user.email}
                     </Link>
                   </li>
+                  
                   <li className="nav-item mx-2">
                     <Link className="nav-link active" to="/" onClick={handleLogout}>
                       LogOut

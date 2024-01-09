@@ -18,6 +18,8 @@ import PageNotFound from './Components/PageNotFound';
 import Rights from './Components/pages/Rights';
 import Laws from './Components/pages/Laws';
 import Spinner from './Components/Spinner';
+import Guides from './Components/pages/Guides';
+import LegalAid from './Components/pages/LegalAid/LegalAid';
   
 function App() {
 
@@ -58,9 +60,11 @@ function App() {
         <Route path='pagenotfound' element={<PageNotFound/>}/>
         <Route path='rights' element={<Rights/>}/>
         <Route path='laws' element={<Laws/>}/>
+        <Route path='guides' element={<Guides/>}/>
+        <Route path='LegalAid' element={<LegalAid/>}/>
 
 
-        //Admin Private Route
+        
         <Route path='/admin' element={<AdminPrivateRoute/>}>
           <Route path='dashboard' element={<AdminDasboard />}/>
         </Route>
