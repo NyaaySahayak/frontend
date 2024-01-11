@@ -76,10 +76,7 @@ body {
     margin-top: auto;
   }
   
-  button:hover {
-    background-color: #0056b3;
-  }
-  
+ 
   /* MapComponent Styles */
   #embed-map-canvas {
     overflow: hidden;
