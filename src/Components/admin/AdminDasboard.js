@@ -34,7 +34,6 @@ export default function AdminDasboard() {
       {userData.map((userData) => (
                 <ProfileCard key={userData._id} profile={userData} />
             ))}
-      {/* <ProfileCard profile={userData}/> */}
     </div>
   )
 }

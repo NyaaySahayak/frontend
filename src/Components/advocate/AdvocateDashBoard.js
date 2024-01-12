@@ -3,13 +3,14 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import QuestionsComponent from './QuestionsComponent';
 import Spinner from '../Spinner';
+import AddnewQuestion from './AddnewQuestion';
 // import EditData from './EditData';
 
 export default function AdvocateDashBoard() {
 
   const [jsonData, setJsonData] = useState([]);
   const [loading, setLoading] = useState(false);
-  
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,15 +30,16 @@ export default function AdvocateDashBoard() {
     fetchData();
   }, []);
 
-  
+
 
   return (
     <div className='container-fluid my-3 '>
       <div className="container">
-        {loading && <Spinner/>}
-        {/* {jsonData && jsonData.map((jsonData) => ( */}
-          <QuestionsComponent  jsonData={jsonData}/>
-        {/* ))} */}
+        {loading && <Spinner />}
+        <AddnewQuestion/>
+        {jsonData.map((jsonData) => (
+          <QuestionsComponent key={jsonData._id} jsonData={jsonData} />
+        ))}
       </div>
     </div>
   )
