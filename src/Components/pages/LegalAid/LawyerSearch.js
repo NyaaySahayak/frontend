@@ -1,21 +1,41 @@
 import React, { useState, useEffect, useCallback } from "react";
-import axios from "axios";
 
 const LawyerSearch = ({ searchQuery, onSearch }) => {
   const [displayedLawyers, setDisplayedLawyers] = useState([]);
   const [originalLawyers, setOriginalLawyers] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get("http://localhost:5000/lawyers");
-      setDisplayedLawyers(response.data);
-      setOriginalLawyers(response.data);
-      setLoading(false);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
+  // router.get('/api/getusers', async (req, res) => {
+  //   try {
+  //     const role = "advocate";
+  //     const advocates = await User.find({ role }).select('name email age contact city speciality').sort({ createdAt: -1 });
+
+  //     res.status(200).json(advocates);
+
+  //   } catch (error) {
+  //     res.status(401).send(error.message);
+  //   }
+  // });
+  useEffect(() => {
+
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:4000/api/getusers");
+        const json = await response.json();
+        setLoading(true);
+        if (response.ok) {
+          setLoading(false);
+          setDisplayedLawyers(json);
+          setOriginalLawyers(json);
+        }
+
+        console.log("displayedLawyers")
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
 
   const handleSearch = (value) => {
     onSearch(value);
@@ -24,12 +44,12 @@ const LawyerSearch = ({ searchQuery, onSearch }) => {
   const filterLawyers = useCallback(() => {
     const lowerCaseQuery = searchQuery.toLowerCase();
 
-    const filteredData = originalLawyers.filter(
-      (item) =>
-        item.name.toLowerCase().includes(lowerCaseQuery) ||
-        item.desc.toLowerCase().includes(lowerCaseQuery) ||
-        item.location.toLowerCase().includes(lowerCaseQuery)
-    );
+    const filteredData = originalLawyers.filter((item) => {
+      const nameMatch = item.name.toLowerCase().includes(lowerCaseQuery);
+
+
+      return nameMatch;
+    });
 
     setDisplayedLawyers(filteredData);
   }, [searchQuery, originalLawyers]);
@@ -38,9 +58,6 @@ const LawyerSearch = ({ searchQuery, onSearch }) => {
     filterLawyers();
   }, [filterLawyers]);
 
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   return (
     <div className="container lawyer-search">
@@ -67,16 +84,16 @@ const LawyerSearch = ({ searchQuery, onSearch }) => {
               ) : displayedLawyers.length === 0 ? (
                 <p className="no-lawyers-found">No lawyers found!</p>
               ) : (
-                displayedLawyers.slice(0, 4).map((lawyer) => (
+                displayedLawyers.slice(0, 6).map((lawyer) => (
                   <div className="boxx" key={lawyer._id}>
                     <div className="box">
                       <div className="bottom">
                         <p className="name" style={{ fontSize: "1.2em" }}>
                           <strong>{lawyer.name}</strong>
                         </p>
-                        <h2 className="specialisation" style={{ fontSize: "0.9em" }}>{lawyer.desc}</h2>
-                        <h2 className="location" style={{ fontSize: "0.9em" }}>{lawyer.location}</h2>
-                        <h2 className="number" style={{ fontSize: "0.9em" }}> Contact: {lawyer.number}</h2>
+                        <h2 className="specialisation" style={{ fontSize: "0.9em" }}>{lawyer.speciality}</h2>
+                        <h2 className="contact" style={{ fontSize: "0.9em" }}> Contact: {lawyer.contact}</h2>
+                        <h2 className="city" style={{ fontSize: "0.9em" }}> City: {lawyer.city}</h2>
                       </div>
                     </div>
                   </div>

@@ -8,7 +8,7 @@ const CreateUserButton = () => {
     const [role, setrole] = useState('')
     const [name, setname] = useState('')
     const [age, setage] = useState('')
-    const [specialization, setspecialization] = useState('')
+    const [speciality, setspeciality] = useState('')
     const [city, setcity] = useState('')
     const [contact, setcontact] = useState('')
 
@@ -18,7 +18,7 @@ const CreateUserButton = () => {
         setrole('');
         setname('');
         setage('');
-        setspecialization('');
+        setspeciality('');
         setcity('');
         setcontact('');
     };
@@ -37,7 +37,7 @@ const CreateUserButton = () => {
         handleModalClose();
         ev.preventDefault()
         try{
-            if (email === '' || password === '' || role === '' || name === '' || age === '' || specialization === '' || city === '' || contact === '') {
+            if (email === '' || password === '' || role === '' || name === '' || age === '' || speciality === '' || city === '' || contact === '') {
                 toast.error("All Fields must be filled")
             }else{
                 const response = await fetch('http://localhost:4000/api/register', {
@@ -46,7 +46,7 @@ const CreateUserButton = () => {
                         "Content-Type": "application/json",
                       },
                       body: JSON.stringify({
-                        email, password, role, name, age,specialization,city,contact
+                        email, password, role, name, age,speciality,city,contact
                       }),
                 })
                 const data = await response.json()
@@ -152,17 +152,17 @@ const CreateUserButton = () => {
                                     />
                                 </div>
                                 <div className="col-12">
-                                    <label htmlFor="inputSpecialization" className="form-label">
-                                        Specialization
+                                    <label htmlFor="inputspeciality" className="form-label">
+                                        speciality
                                     </label>
                                     <input
                                         type="text"
                                         className="form-control"
-                                        id="inputSpecialization"
-                                        name="specialization"
-                                        placeholder="Enter specialization"
-                                        value={specialization}
-                                        onChange={(e) => setspecialization(e.target.value)}
+                                        id="inputspeciality"
+                                        name="speciality"
+                                        placeholder="Enter speciality"
+                                        value={speciality}
+                                        onChange={(e) => setspeciality(e.target.value)}
                                     />
                                 </div>
                                 <div className="col-md-6">

@@ -8,11 +8,12 @@ export default function AdminDasboard() {
   const [userData, setUserData] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    setLoading(true);
     const fetchData = async () => {
       try {
+        
         const response = await fetch('http://localhost:4000/api/getusers');
         const json = await response.json();
+        setLoading(true);
         if (response.ok) {
           setUserData(json);
           setLoading(false);
@@ -23,10 +24,10 @@ export default function AdminDasboard() {
       }
     };
     fetchData();
-  }, []);
-  console.log(userData  )
+  }, [userData]);
+  // console.log(userData)
 
-  return (
+  return (  
     <div>
       {loading && <Spinner/>}
       <CreateUserButton/> 

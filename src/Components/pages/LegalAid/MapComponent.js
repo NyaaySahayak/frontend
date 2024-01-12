@@ -2,7 +2,7 @@ import React from 'react';
 
 const MapComponent = () => {
   return (
-    <div style={{ overflow: 'hidden',width:'100%', height: '650px',marginLeft:'2%',marginRight:'2%' }}>
+    <div style={{ overflow: 'hidden',width:'100%', height: '550px',marginLeft:'2%',marginRight:'2%' }}>
       <div id="another-map-canvas" style={{ height: '100%', width: '100%' }}>
         <iframe
           style={{ height: '100%', width: '100%', border: '0' }}
