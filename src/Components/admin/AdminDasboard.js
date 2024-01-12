@@ -1,9 +1,39 @@
-import React from 'react'
+import { useState } from 'react'
+import { useEffect } from 'react'
+import CreateUserButton from './CreateUserButton'
+import ProfileCard from './ProfileCard'
+import Spinner from '../Spinner';
 
 export default function AdminDasboard() {
+  const [userData, setUserData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    setLoading(true);
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:4000/api/getusers');
+        const json = await response.json();
+        if (response.ok) {
+          setUserData(json);
+          setLoading(false);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+  console.log(userData  )
+
   return (
     <div>
-      <h1>Welcome to admin page</h1>
+      {loading && <Spinner/>}
+      <CreateUserButton/> 
+      {userData.map((userData) => (
+                <ProfileCard key={userData._id} profile={userData} />
+            ))}
+      {/* <ProfileCard profile={userData}/> */}
     </div>
   )
 }

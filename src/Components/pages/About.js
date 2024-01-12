@@ -21,7 +21,7 @@ export default function About() {
     backgroundColor:'#E5E1DA'
 }
 const card={
-  width: '18rem', margin: '10px', backgroundColor: '#fff', borderRadius: '8px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',margin:' 0% 7%'
+  width: '18rem', backgroundColor: '#fff', borderRadius: '8px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)', margin:' 0% 7%'
 }
   return (
     <>

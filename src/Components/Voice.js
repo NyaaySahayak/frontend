@@ -2,14 +2,25 @@ import React, { useState } from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import char from '../Components/images/char.png';
 import { useSpeechSynthesis } from 'react-speech-kit';
+// import TextSearch from './TextSearch';
 
 export default function VoiceAssistant(props) {
 
+  const [searchText, setSearchText] = useState('');
+  const [repeatButton , setRepeatButton] = useState(true);
 
+  const handleSearch = () => {
+    // console.log('Search Text:', searchText);
+    findanswer(searchText);
+    setRepeatButton(false);
+
+
+
+  };
   //Fetching the data from backend
-  
+
   const jsonData = props.data;
-  const { transcript, listening, resetTranscript, isMicrophoneAvailable, browserSupportsSpeechRecognition } = useSpeechRecognition({onEnd: () => submit()});
+  const { transcript, listening, resetTranscript, isMicrophoneAvailable, browserSupportsSpeechRecognition } = useSpeechRecognition({ onEnd: () => submit() });
   const [mytranscript, newtranscript] = useState(transcript);
   const { speak } = useSpeechSynthesis();
 
@@ -77,6 +88,7 @@ export default function VoiceAssistant(props) {
       return null;
     }
     else {
+      setRepeatButton(true);
       findanswer(transcript);
 
     }
@@ -102,17 +114,40 @@ export default function VoiceAssistant(props) {
             </div>
           </div>
           <div className="col-8 d-flex flex-column align-items-center justify-content-center" style={{ height: "95vh", backgroundColor: "" }} >
-            <div className="response text-center" id='resu' style={{ height: "85vh", width: "100vh", backgroundColor: transcript || mytranscript ? "rgba(255,255,255,0.5)" : "transparent", transition: "background-color 0.5s ease", borderRadius: "50px" }} >
+            {/* Search Bar for text to text */}
+            {/* <TextSearch/> */}
+            <div className="input-group container" style={{ width: '480px', marginTop: '9px', padding: '1px' }}>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Search..."
+
+                value={searchText}
+                onChange={(e) => setSearchText(e.target.value)}
+              />
+              <button
+                className="btn btn-outline-secondary "
+                type="button"
+
+                onClick={handleSearch}
+              >
+                <span class="material-symbols-outlined ">
+                  search
+                </span>
+              </button>
+            </div>
+
+            <div className="response text-center" id='resu' style={{ height: "80vh", width: "100vh", backgroundColor: transcript || mytranscript ? "rgba(255,255,255,0.5)" : "transparent", transition: "background-color 0.5s ease", borderRadius: "50px" }} >
               <div className="row-2 text-center my-4" style={{ padding: "2%", margin: "2%", fontSize: "18px", fontWeight: "bold" }} >
                 {transcript}
               </div>
               <div className="row-2 text-center position-relative" style={{ fontSize: "18px", padding: "2%", margin: "2%", height: "50vh" }} >
-                {mytranscript !== "" ? (
+                {mytranscript !== "" ?  (
                   <>
                     {mytranscript}
-                    <div className="d-grid gap-2 col-2 mx-auto text-center position-absolute bottom-0 end-0">
+                    {repeatButton && <div className="d-grid gap-2 col-2 mx-auto text-center position-absolute bottom-0 end-0">
                       <button className="btn btn-primary" onClick={() => speak({ text: mytranscript })} type="button">Repeat</button>
-                    </div>
+                    </div>}
                   </>
                 ) : (<></>)}
               </div>
