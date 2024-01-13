@@ -1,10 +1,8 @@
 import React from 'react'
-
 import { useState, useEffect } from 'react';
 import QuestionsComponent from './QuestionsComponent';
 import Spinner from '../Spinner';
 import AddnewQuestion from './AddnewQuestion';
-// import EditData from './EditData';
 
 export default function AdvocateDashBoard() {
 

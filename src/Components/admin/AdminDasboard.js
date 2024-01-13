@@ -24,7 +24,7 @@ export default function AdminDasboard() {
       }
     };
     fetchData();
-  }, [userData]);
+  }, []);
   // console.log(userData)
 
   return (  
