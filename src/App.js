@@ -2,7 +2,7 @@ import './App.css';
 import React , {useState, useEffect} from 'react'; 
 import { Routes, Route , useLocation , Navigate} from "react-router-dom";
 import Navbar from './Components/Navbar';
-import SubNavBar from './Components/SubNavBar';
+import BreadcrumbBar from './Components/BreadcrumbBar';
 import VoiceAssistant from './Components/Voice';
 // import Mybot from './Components/bot/Mybot';
 import About from './Components/pages/About';
@@ -45,7 +45,7 @@ function App() {
   }, []);
 
   const location = useLocation();
-
+  console.log(location)
   const visibleRoutes = [
     '/',
     '/About',
@@ -57,13 +57,13 @@ function App() {
     '/Awareness/guides',
     '/LegalAid',
   ];
-  const shouldShowSubNavBar = visibleRoutes.includes(location.pathname);
+  const shouldShowBreadcrumbBar = visibleRoutes.includes(location.pathname);
     
   return (
     <div className="App">
       <Navbar/>
       {loading && <Spinner/>}
-      {shouldShowSubNavBar && <SubNavBar location={location} />}
+      {shouldShowBreadcrumbBar && <BreadcrumbBar location={location} />}
       <Chatbot data={jsonData}/>
       <Routes>
         <Route index element={<VoiceAssistant data={jsonData}/>}/>
