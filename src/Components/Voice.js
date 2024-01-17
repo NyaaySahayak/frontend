@@ -7,7 +7,7 @@ import { useSpeechSynthesis } from 'react-speech-kit';
 export default function VoiceAssistant(props) {
 
   const [searchText, setSearchText] = useState('');
-  const [repeatButton , setRepeatButton] = useState(true);
+  const [repeatButton, setRepeatButton] = useState(true);
 
   const handleSearch = () => {
     // console.log('Search Text:', searchText);
@@ -59,7 +59,7 @@ export default function VoiceAssistant(props) {
         console.log("No matching answer found for the given question.");
         newtranscript("No matching answer found for the given question.");
         if (inputSource === 'voice') {
-        speak({ text: "No matching answer found for the given question." });
+          speak({ text: "No matching answer found for the given question." });
         }
       }
     }
@@ -67,7 +67,7 @@ export default function VoiceAssistant(props) {
       console.log("No questions found in the JSON data.");
       newtranscript("No questions found in the JSON data.");
       if (inputSource === 'voice') {
-      speak({ text: "No questions found in the JSON data." });
+        speak({ text: "No questions found in the JSON data." });
       }
     }
   }
@@ -118,8 +118,18 @@ export default function VoiceAssistant(props) {
           <div className="col-4 d-flex flex-column align-items-center justify-content-center" style={{ height: "95vh" }}>
             <img src={char} alt='our char' />
             <div className="text-center">
-              <button className="btn btn-success" style={{ "padding": "30px", "marginRight": "20px", "borderRadius": "50%" }} onClick={clicks}>{listening ? 'Stop' : 'Start'}</button>
-              <button className="btn btn-warning" style={{ "padding": "30px", "borderRadius": "50%" }} onClick={reset}>Reset</button>
+              <button className="btn btn-success" onClick={clicks} style={{ borderRadius: '50%' }}>
+                {listening ? <span class="material-symbols-outlined" style={{ fontSize: '50px' }}>
+                  mic_off
+                </span> : <span class="material-symbols-outlined" style={{ fontSize: '50px' }}>
+                  mic
+                </span>}
+              </button>
+
+              <button className="btn btn-warning" onClick={reset} style={{ borderRadius: '50%' }}>
+                <span className="material-symbols-outlined" style={{ fontSize: '50px' }}>refresh</span>
+              </button>
+
             </div>
           </div>
           <div className="col-8 d-flex flex-column align-items-center justify-content-center" style={{ height: "95vh", backgroundColor: "" }} >
@@ -151,7 +161,7 @@ export default function VoiceAssistant(props) {
                 {transcript}
               </div>
               <div className="row-2 text-center position-relative" style={{ fontSize: "18px", padding: "2%", margin: "2%", height: "50vh" }} >
-                {mytranscript !== "" ?  (
+                {mytranscript !== "" ? (
                   <>
                     {mytranscript}
                     {repeatButton && <div className="d-grid gap-2 col-2 mx-auto text-center position-absolute bottom-0 end-0">

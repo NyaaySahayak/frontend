@@ -1,7 +1,8 @@
 import './App.css';
 import React , {useState, useEffect} from 'react'; 
-import { Routes, Route} from "react-router-dom";
+import { Routes, Route , useLocation , Navigate} from "react-router-dom";
 import Navbar from './Components/Navbar';
+import SubNavBar from './Components/SubNavBar';
 import VoiceAssistant from './Components/Voice';
 // import Mybot from './Components/bot/Mybot';
 import About from './Components/pages/About';
@@ -43,14 +44,26 @@ function App() {
     fetchData();
   }, []);
 
-  
+  const location = useLocation();
 
-
-  
+  const visibleRoutes = [
+    '/',
+    '/About',
+    '/Awareness',
+    '/login',
+    '/pagenotfound',
+    '/Awareness/rights',
+    '/Awareness/laws',
+    '/Awareness/guides',
+    '/LegalAid',
+  ];
+  const shouldShowSubNavBar = visibleRoutes.includes(location.pathname);
+    
   return (
     <div className="App">
       <Navbar/>
       {loading && <Spinner/>}
+      {shouldShowSubNavBar && <SubNavBar location={location} />}
       <Chatbot data={jsonData}/>
       <Routes>
         <Route index element={<VoiceAssistant data={jsonData}/>}/>
@@ -58,9 +71,9 @@ function App() {
         <Route path='Awareness' element={<Awareness/>}/>
         <Route path='login' element={<LoginPage/>}/>
         <Route path='pagenotfound' element={<PageNotFound/>}/>
-        <Route path='rights' element={<Rights/>}/>
-        <Route path='laws' element={<Laws/>}/>
-        <Route path='guides' element={<Guides/>}/>
+        <Route path='Awareness/rights' element={<Rights/>}/>
+        <Route path='Awareness/laws' element={<Laws/>}/>
+        <Route path='Awareness/guides' element={<Guides/>}/>
         <Route path='LegalAid' element={<LegalAid/>}/>
 
 
@@ -72,7 +85,7 @@ function App() {
         <Route path='/advocate' element={<AdvocatePrivateRoute/>}>
           <Route path='dashboard' element={<AdvocateDashBoard/>}/>
         </Route>
-        
+        <Route path="*" element={<Navigate to="pagenotfound" />} />
       </Routes>
 
 

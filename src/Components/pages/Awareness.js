@@ -14,7 +14,7 @@ export default function Awareness() {
           <div className="maincards-body" id="one">
             <h1 className="maincards-title">LAWS</h1>
             <p className="maincards-info">Different laws.</p>
-            <button className="maincards-btn"><Link to={'/laws'} >KNOW MORE</Link></button>
+            <button className="maincards-btn"><Link to={'/Awareness/laws'} >KNOW MORE</Link></button>
           </div>
         </div>
       </div>
@@ -24,7 +24,7 @@ export default function Awareness() {
           <div className="maincards-body">
             <h1 className="maincards-title">RIGHTS</h1>
             <p className="maincards-info">Rights and Duties of citizens.</p>
-            <button className="maincards-btn"><Link to={'/rights'} >KNOW MORE</Link></button>
+            <button className="maincards-btn"><Link to={'/Awareness/rights'} >KNOW MORE</Link></button>
           </div>
         </div>
       </div>
@@ -34,7 +34,7 @@ export default function Awareness() {
           <div className="maincards-body">
             <h1 className="maincards-title">GUIDES</h1>
             <p className="maincards-info">Related to legal documents.</p>
-            <button className="maincards-btn"><Link to={'/guides'} >KNOW MORE</Link></button>
+            <button className="maincards-btn"><Link to={'/Awareness/guides'} >KNOW MORE</Link></button>
           </div>
         </div>
       </div>
