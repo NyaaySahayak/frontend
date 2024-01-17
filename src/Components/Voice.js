@@ -13,11 +13,10 @@ export default function VoiceAssistant(props) {
     // console.log('Search Text:', searchText);
     findanswer(searchText);
     setRepeatButton(false);
-
-
-
+    setInputSource('text');
   };
   //Fetching the data from backend
+  const [inputSource, setInputSource] = useState('');
 
   const jsonData = props.data;
   const { transcript, listening, resetTranscript, isMicrophoneAvailable, browserSupportsSpeechRecognition } = useSpeechRecognition({ onEnd: () => submit() });
@@ -51,19 +50,25 @@ export default function VoiceAssistant(props) {
       if (bestMatchQuestion) {
         console.log("Answer: ", bestMatchQuestion.answer);
         newtranscript(bestMatchQuestion.answer);
-        speak({ text: bestMatchQuestion.answer });
+        if (inputSource === 'voice') {
+          speak({ text: bestMatchQuestion.answer });
+        }
 
       }
       else {
         console.log("No matching answer found for the given question.");
         newtranscript("No matching answer found for the given question.");
+        if (inputSource === 'voice') {
         speak({ text: "No matching answer found for the given question." });
+        }
       }
     }
     else {
       console.log("No questions found in the JSON data.");
       newtranscript("No questions found in the JSON data.");
+      if (inputSource === 'voice') {
       speak({ text: "No questions found in the JSON data." });
+      }
     }
   }
 
@@ -73,26 +78,30 @@ export default function VoiceAssistant(props) {
   if (!isMicrophoneAvailable) {
     // alert('MicroPhone access is denied');
   }
-
   function check() {
     if (listening) {
-      SpeechRecognition.stopListening()
-    }
-    else {
-      SpeechRecognition.startListening({ continuous: true })
+      SpeechRecognition.stopListening();
+    } else {
+      SpeechRecognition.startListening({ continuous: true });
+      // If starting listening for the second time, reset the right div
+      if (transcript) {
+        newtranscript('');
+        resetTranscript();
+
+      }
     }
   }
 
   function submit() {
     if (!listening) {
       return null;
-    }
-    else {
+    } else {
       setRepeatButton(true);
       findanswer(transcript);
-
+      setInputSource('voice');
     }
   }
+
   function clicks() {
     check();
     submit();
