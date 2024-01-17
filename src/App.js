@@ -60,7 +60,7 @@ function App() {
   const shouldShowBreadcrumbBar = visibleRoutes.includes(location.pathname);
     
   return (
-    <div className="App">
+    <div className="App"  >
       <Navbar/>
       {loading && <Spinner/>}
       {shouldShowBreadcrumbBar && <BreadcrumbBar location={location} />}

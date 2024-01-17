@@ -60,7 +60,8 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="container d-flex justify-content-center align-items-center  " style={{ height: "90vh" }}>
+<div style={{background: "linear-gradient(90deg, rgba(0,120,183,1) 0%, rgba(7,24,68,1) 100%)"}}>
+    <div className="container d-flex justify-content-center align-items-center  " style={{ height: "90vh"  }}>
       <div className="row" style={{ height: "40vh" }}>
         <form className="col-md-12" style={{ width: "89vh" }} onSubmit={loginUser}>
           <div className="input-group mb-3">
@@ -81,6 +82,7 @@ export default function LoginPage() {
           
         </form>
       </div>
+    </div>
     </div>
   )
 }

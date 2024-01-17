@@ -112,20 +112,20 @@ export default function VoiceAssistant(props) {
   return (
     <>
       <div className='container-fluid'>
-        <div className="row" style={{ backgroundImage: `url(${require("./images/bg-images/45304.png")})` }}>
-          <div className="col-4 d-flex flex-column align-items-center justify-content-center" style={{ height: "95vh" }}>
+        <div className="row" style={{background: "linear-gradient(90deg, rgba(0,120,183,1) 0%, rgba(7,24,68,1) 100%)"}}>
+          <div className="col-4 d-flex flex-column align-items-center justify-content-center" style={{ height: "85vh" }}>
             <img src={char} alt='our char' />
             <div className="text-center">
-              <button className="btn btn-success" onClick={clicks} style={{ borderRadius: '50%' }}>
-                {listening ? <span class="material-symbols-outlined" style={{ fontSize: '50px' }}>
+              <button className="btn btn-success" onClick={clicks} style={{ borderRadius: '50%', marginRight: '10px' }}>
+                {listening ? <span class="material-symbols-outlined" style={{ fontSize: '4  5px' }}>
                   mic_off
-                </span> : <span class="material-symbols-outlined" style={{ fontSize: '50px' }}>
+                </span> : <span class="material-symbols-outlined" style={{ fontSize: '45px' }}>
                   mic
                 </span>}
               </button>
 
-              <button className="btn btn-warning" onClick={reset} style={{ borderRadius: '50%' }}>
-                <span className="material-symbols-outlined" style={{ fontSize: '50px' }}>refresh</span>
+              <button className="btn btn-warning" onClick={reset} style={{ borderRadius: '50%'}}>
+                <span className="material-symbols-outlined" style={{ fontSize: '45px' }}>refresh</span>
               </button>
 
             </div>

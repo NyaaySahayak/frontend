@@ -6,7 +6,7 @@ const BreadcrumbBar = ({ location }) => {
   // console.log("patnames=>",location.pathname.split('/').filter((x) => x));
   
   return (
-    <nav className="py-2" style={{ background: 'linear-gradient(45deg, #ff8a00, #e52e71)' }}>
+    <nav className="py-2" style={{background: "linear-gradient(90deg, rgba(0,120,183,1) 0%, rgba(7,24,68,1) 100%)"}}>
         <div className="container">
         <ol className="breadcrumb bg-transparent m-0 p-0">
           <li className="breadcrumb-item">

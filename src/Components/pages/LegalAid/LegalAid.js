@@ -7,11 +7,14 @@ const LegalAid = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   return (
-    <div className="legal-aid-container">
+    <div >
+
+    <div className="legal-aid-container" >
       <div className="flex-container">
         <MapComponent />
         <LawyerSearch searchQuery={searchQuery} onSearch={setSearchQuery} />
       </div>
+    </div>
     </div>
   );
 };
