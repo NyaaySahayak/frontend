@@ -45,7 +45,6 @@ function App() {
   }, []);
 
   const location = useLocation();
-  console.log(location)
   const visibleRoutes = [
     '/',
     '/About',

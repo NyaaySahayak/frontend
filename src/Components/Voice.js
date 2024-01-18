@@ -117,9 +117,9 @@ export default function VoiceAssistant(props) {
             <img src={char} alt='our char' />
             <div className="text-center">
               <button className="btn btn-success" onClick={clicks} style={{ borderRadius: '50%', marginRight: '10px' }}>
-                {listening ? <span class="material-symbols-outlined" style={{ fontSize: '4  5px' }}>
+                {listening ? <span className="material-symbols-outlined" style={{ fontSize: '4  5px' }}>
                   mic_off
-                </span> : <span class="material-symbols-outlined" style={{ fontSize: '45px' }}>
+                </span> : <span className="material-symbols-outlined" style={{ fontSize: '45px' }}>
                   mic
                 </span>}
               </button>
@@ -144,7 +144,7 @@ export default function VoiceAssistant(props) {
                 type="button"
                 onClick={handleSearch}
               >
-                <span class="material-symbols-outlined ">
+                <span className="material-symbols-outlined ">
                   search
                 </span>
               </button>
