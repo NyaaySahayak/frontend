@@ -48,7 +48,6 @@ export default function LoginPage() {
           }else{
             navigate("/admin/dashboard")
           }
-
         } else {
           toast.error("Token verification failed");
         }
