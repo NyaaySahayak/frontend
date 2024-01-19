@@ -1,7 +1,8 @@
 import React from 'react';
 import { toast } from 'react-toastify';
 
-const ProfileCard = ({ profile }) => {
+const ProfileCard = (props) => {
+    const profile = props.profile;
     const { name, age, city, email, contact, speciality } = profile;
 
     async function handleDelete() {
@@ -16,6 +17,7 @@ const ProfileCard = ({ profile }) => {
                 }),
             });
             const data = await response.json();
+            props.setchangesInUser((prev)=>!prev)  
             toast.warning(data.message);
         } catch (error) {
             toast.error('Error: ', error);

@@ -7,10 +7,11 @@ import Spinner from '../Spinner';
 export default function AdminDasboard() {
   const [userData, setUserData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [changesInUser, setchangesInUser] = useState('');
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
-        
         const response = await fetch('http://localhost:4000/api/getusers');
         const json = await response.json();
         setLoading(true);
@@ -24,15 +25,19 @@ export default function AdminDasboard() {
       }
     };
     fetchData();
-  }, []);
+  },[changesInUser]);
+
+
+
+  
   // console.log(userData)
 
   return (  
     <div>
       {loading && <Spinner/>}
-      <CreateUserButton/> 
+      <CreateUserButton setchangesInUser={setchangesInUser}/> 
       {userData.map((userData) => (
-                <ProfileCard key={userData._id} profile={userData} />
+                <ProfileCard key={userData._id} setchangesInUser={setchangesInUser} profile={userData} />
             ))}
     </div>
   )

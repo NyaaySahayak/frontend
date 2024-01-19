@@ -63,7 +63,7 @@ function App() {
       <Navbar/>
       {loading && <Spinner/>}
       {shouldShowBreadcrumbBar && <BreadcrumbBar location={location} />}
-      <Chatbot data={jsonData}/>
+      <Chatbot />
       <Routes>
         <Route index element={<VoiceAssistant data={jsonData}/>}/>
         <Route path='About' element={<About/>}/>

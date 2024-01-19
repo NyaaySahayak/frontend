@@ -8,6 +8,7 @@ export default function AdvocateDashBoard() {
 
   const [jsonData, setJsonData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [changesInData, setchangesInData] = useState('');
 
 
   useEffect(() => {
@@ -26,7 +27,7 @@ export default function AdvocateDashBoard() {
       }
     };
     fetchData();
-  }, []);
+  }, [changesInData]);
 
 
 
@@ -34,9 +35,9 @@ export default function AdvocateDashBoard() {
     <div className='container-fluid my-3 '>
       <div className="container">
         {loading && <Spinner />}
-        <AddnewQuestion/>
+        <AddnewQuestion setchangesInData={setchangesInData} />
         {jsonData.map((jsonData) => (
-          <QuestionsComponent key={jsonData._id} jsonData={jsonData} />
+          <QuestionsComponent key={jsonData._id} setchangesInData={setchangesInData} jsonData={jsonData} />
         ))}
       </div>
     </div>

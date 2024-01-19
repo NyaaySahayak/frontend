@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { toast } from 'react-toastify'
 
 
-export default function AddnewQuestion() {
+export default function AddnewQuestion(props) {
     const [showModal, setShowModal] = useState(false);
     const [question, setQuestion] = useState('');
     const [answer, setAnswer] = useState('');
@@ -42,6 +42,7 @@ export default function AddnewQuestion() {
                 // const data = await response.json();
                 if (response.ok) {
                     handleClear();
+                    props.setchangesInData((prev)=>!prev)
                     toast.success("Question Added Successfully")
 
                 } else {

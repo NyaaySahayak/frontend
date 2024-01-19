@@ -34,6 +34,7 @@ export default function QuestionsComponent(props) {
         }),
       });
       const data = await response.json();
+      props.setchangesInData((prev)=>!prev);
       toast.warning(data.message);
     } catch (error) {
       toast.error('Error: ', error);

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify'
 
-const CreateUserButton = () => {
+const CreateUserButton = (props) => {
     const [showModal, setShowModal] = useState(false);
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -35,7 +35,7 @@ const CreateUserButton = () => {
 
     async function handleCreateUser(ev) {
         handleModalClose();
-        ev.preventDefault()
+        ev.preventDefault();
         try{
             if (email === '' || password === '' || role === '' || name === '' || age === '' || speciality === '' || city === '' || contact === '') {
                 toast.error("All Fields must be filled")
@@ -49,22 +49,22 @@ const CreateUserButton = () => {
                         email, password, role, name, age,speciality,city,contact
                       }),
                 })
-                const data = await response.json()
+                const data = await response.json();
                 if (response.ok) {
-                        handleClear();                    
+                        handleClear();   
+                        props.setchangesInUser((prev)=>!prev)                
                 }
                 if (data) {
-                    toast.info(data.message)
+                    toast.info(data.message);
                 }else{
-                    toast.error("Technical Error")
+                    toast.error("Technical Error");
                 }
-                
             }
-    
         }catch(error){
-            toast.error("Error:", error)
+            toast.error("Error:", error);
         }
     }
+
 
     return (
         <>
