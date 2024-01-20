@@ -1,6 +1,3 @@
-
-
-
 //dsloggedin
 export const isLoggedIn=()=>{
     let data = window.localStorage.getItem('data')
@@ -17,7 +14,6 @@ export const doLogin=(data, next)=>{
     localStorage.setItem('data', JSON.stringify(data));
     console.log(data);
     next();
-
 };
 
 //dologout

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 export default function Awareness() {
   return (
     <div style={{ backgroundImage: `url(${require("../images/bg-images/45304.png")})`, height: "91vh"}}> 
-
+    
     <div className='maincardsrow' >
       <div className='col-4'>
         <div className="maincards">

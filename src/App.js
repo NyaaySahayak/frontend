@@ -45,6 +45,7 @@ function App() {
   }, []);
 
   const location = useLocation();
+  console.log(location);
   const visibleRoutes = [
     '/',
     '/About',
@@ -56,6 +57,7 @@ function App() {
     '/Awareness/guides',
     '/LegalAid',
   ];
+
   const shouldShowBreadcrumbBar = visibleRoutes.includes(location.pathname);
     
   return (
@@ -75,8 +77,8 @@ function App() {
         <Route path='Awareness/guides' element={<Guides/>}/>
         <Route path='LegalAid' element={<LegalAid/>}/>
 
-
         
+
         <Route path='/admin' element={<AdminPrivateRoute/>}>
           <Route path='dashboard' element={<AdminDasboard />}/>
         </Route>
