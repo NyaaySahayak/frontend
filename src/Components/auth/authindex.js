@@ -9,7 +9,7 @@ export const isLoggedIn=()=>{
     }
 };
 
-//dologin
+//dologin   
 export const doLogin=(data, next)=>{
     localStorage.setItem('data', JSON.stringify(data));
     console.log(data);

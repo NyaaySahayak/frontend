@@ -5,31 +5,16 @@ const LawyerSearch = ({ searchQuery, onSearch }) => {
   const [originalLawyers, setOriginalLawyers] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // router.get('/api/getusers', async (req, res) => {
-  //   try {
-  //     const role = "advocate";
-  //     const advocates = await User.find({ role }).select('name email age contact city speciality').sort({ createdAt: -1 });
-
-  //     res.status(200).json(advocates);
-
-  //   } catch (error) {
-  //     res.status(401).send(error.message);
-  //   }
-  // });
   useEffect(() => {
-
     const fetchData = async () => {
       try {
         const response = await fetch("http://localhost:4000/api/getusers");
         const json = await response.json();
-        setLoading(true);
+        setLoading(false);
         if (response.ok) {
-          setLoading(false);
           setDisplayedLawyers(json);
           setOriginalLawyers(json);
         }
-
-        console.log("displayedLawyers")
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -46,9 +31,10 @@ const LawyerSearch = ({ searchQuery, onSearch }) => {
 
     const filteredData = originalLawyers.filter((item) => {
       const nameMatch = item.name.toLowerCase().includes(lowerCaseQuery);
+      const cityMatch = item.city.toLowerCase().includes(lowerCaseQuery);
+      const professionMatch = item.speciality.toLowerCase().includes(lowerCaseQuery);
 
-
-      return nameMatch;
+      return nameMatch || cityMatch || professionMatch;
     });
 
     setDisplayedLawyers(filteredData);
@@ -57,7 +43,6 @@ const LawyerSearch = ({ searchQuery, onSearch }) => {
   useEffect(() => {
     filterLawyers();
   }, [filterLawyers]);
-
 
   return (
     <div className="container lawyer-search">

@@ -11,7 +11,7 @@ export default function VoiceAssistant(props) {
   const handleSearch = () => {
     // console.log('Search Text:', searchText);
     findanswer(searchText);
-    setRepeatButton(false);
+    setRepeatButton(true);
     setInputSource('text');
   };
   //Fetching the data from backend
