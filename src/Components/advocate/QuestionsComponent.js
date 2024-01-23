@@ -1,4 +1,4 @@
-import { useState , useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 export default function QuestionsComponent(props) {
   let jsonData = props.jsonData;
@@ -34,7 +34,7 @@ export default function QuestionsComponent(props) {
         }),
       });
       const data = await response.json();
-      props.setchangesInData((prev)=>!prev);
+      props.setchangesInData((prev) => !prev);
       toast.warning(data.message);
     } catch (error) {
       toast.error('Error: ', error);
@@ -43,6 +43,7 @@ export default function QuestionsComponent(props) {
 
   async function handleSave() {
     try {
+      handleModalClose();
       const questionId = props.jsonData._id;
       const response = await fetch('http://localhost:4000/data', {
         method: 'PUT',
@@ -56,13 +57,14 @@ export default function QuestionsComponent(props) {
         }),
       });
       const data = await response.json();
+      props.setchangesInData((prev) => !prev);
       toast.success(data.message);
     } catch (error) {
       toast.error('Error: ', error);
     }
   }
-  
-  
+
+
   const [showScrollButton, setShowScrollButton] = useState(false);
 
   useEffect(() => {
@@ -105,8 +107,8 @@ export default function QuestionsComponent(props) {
         onClick={handleScrollToTop}
       >
         <span class="material-symbols-outlined">
-arrow_upward
-</span>
+          arrow_upward
+        </span>
       </button>
       <div>
         <div className="card my-3">

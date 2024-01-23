@@ -4,7 +4,6 @@ import { Routes, Route , useLocation , Navigate} from "react-router-dom";
 import Navbar from './Components/Navbar';
 import BreadcrumbBar from './Components/BreadcrumbBar';
 import VoiceAssistant from './Components/Voice';
-// import Mybot from './Components/bot/Mybot';
 import About from './Components/pages/About';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -26,6 +25,7 @@ function App() {
 
   const [jsonData, setJsonData] = useState([]);
   const [loading, setLoading] = useState(false);
+  
   useEffect(() => {
     setLoading(true);
     const fetchData = async () => {

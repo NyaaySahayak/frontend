@@ -10,7 +10,6 @@ export default function AdvocateDashBoard() {
   const [loading, setLoading] = useState(false);
   const [changesInData, setchangesInData] = useState('');
 
-
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -28,8 +27,6 @@ export default function AdvocateDashBoard() {
     };
     fetchData();
   }, [changesInData]);
-
-
 
   return (
     <div className='container-fluid my-3 '>
