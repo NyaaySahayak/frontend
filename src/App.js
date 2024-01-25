@@ -20,15 +20,18 @@ import Laws from './Components/pages/Laws';
 import Spinner from './Components/Spinner';
 import Guides from './Components/pages/Guides';
 import LegalAid from './Components/pages/LegalAid/LegalAid';
+import DropDownCheck from './Components/DropDownCheck';
   
 function App() {
 
   const [jsonData, setJsonData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [changesInData, setchangesInData] = useState('');
+
   
   useEffect(() => {
     setLoading(true);
-    const fetchData = async () => {
+    const fetchData = async () => { 
       try {
         const response = await fetch('http://localhost:4000/data');
         const json = await response.json();
@@ -42,7 +45,7 @@ function App() {
       }
     };
     fetchData();
-  }, []);
+  }, [changesInData]);
 
   const location = useLocation();
   console.log(location);
@@ -76,6 +79,8 @@ function App() {
         <Route path='Awareness/laws' element={<Laws/>}/>
         <Route path='Awareness/guides' element={<Guides/>}/>
         <Route path='LegalAid' element={<LegalAid/>}/>
+        <Route path='drop' element={<DropDownCheck/>}/>
+
 
         
 
@@ -84,7 +89,7 @@ function App() {
         </Route>
 
         <Route path='/advocate' element={<AdvocatePrivateRoute/>}>
-          <Route path='dashboard' element={<AdvocateDashBoard/>}/>
+          <Route path='dashboard' element={<AdvocateDashBoard jsonData={jsonData} setchangesInData={setchangesInData} loading={loading} />}/>
         </Route>
         <Route path="*" element={<Navigate to="pagenotfound" />} />
       </Routes>

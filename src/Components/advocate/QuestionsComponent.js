@@ -22,22 +22,25 @@ export default function QuestionsComponent(props) {
   };
 
   async function handleDelete() {
-    try {
-      const question = jsonData.question
-      const response = await fetch('http://localhost:4000/data', {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          question
-        }),
-      });
-      const data = await response.json();
-      props.setchangesInData((prev) => !prev);
-      toast.warning(data.message);
-    } catch (error) {
-      toast.error('Error: ', error);
+    const isConfirmed = window.confirm("Are you sure you want to delete?");
+    if (isConfirmed) {
+      try {
+        const question = jsonData.question
+        const response = await fetch('http://localhost:4000/data', {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            question
+          }),
+        });
+        const data = await response.json();
+        props.setchangesInData((prev) => !prev);
+        toast.warning(data.message);
+      } catch (error) {
+        toast.error('Error: ', error);
+      }
     }
   }
 

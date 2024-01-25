@@ -42,7 +42,7 @@ export default function AddnewQuestion(props) {
                 // const data = await response.json();
                 if (response.ok) {
                     handleClear();
-                    props.setchangesInData((prev)=>!prev)
+                    props.setchangesInData((prev) => !prev)
                     toast.success("Question Added Successfully")
 
                 } else {
@@ -56,6 +56,13 @@ export default function AddnewQuestion(props) {
 
     return (
         <>
+
+
+
+
+        
+            
+
             <button className="btn btn-primary position-fixed top-10 end-0 m-3 " style={{ zIndex: '1000' }} onClick={handleModalOpen}>
                 Add New
             </button>

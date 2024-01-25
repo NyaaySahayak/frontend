@@ -69,7 +69,7 @@ const LawyerSearch = ({ searchQuery, onSearch }) => {
               ) : displayedLawyers.length === 0 ? (
                 <p className="no-lawyers-found">No lawyers found!</p>
               ) : (
-                displayedLawyers.slice(0, 6).map((lawyer) => (
+                displayedLawyers.map((lawyer) => (
                   <div className="boxx" key={lawyer._id}>
                     <div className="box">
                       <div className="bottom">

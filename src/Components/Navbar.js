@@ -82,6 +82,8 @@ function Navbar() {
               <Link className="navbar-brand mx-auto" to={`/${user.role === "admin" ? "admin":"advocate"}/dashboard`}>
                 NYAAY SAHAYAK
               </Link>
+
+              
               <button
                 className="navbar-toggler d-lg-none"
                 type="button"

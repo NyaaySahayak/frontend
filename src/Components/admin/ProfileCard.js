@@ -6,6 +6,9 @@ const ProfileCard = (props) => {
     const { name, age, city, email, contact, speciality } = profile;
 
     async function handleDelete() {
+        const isConfirmed = window.confirm("Are you sure you want to delete?");
+        if (isConfirmed) {
+            
         try {
             const response = await fetch('http://localhost:4000/api/user', {
                 method: 'DELETE',
@@ -22,6 +25,8 @@ const ProfileCard = (props) => {
         } catch (error) {
             toast.error('Error: ', error);
         }
+    }
+
     }
 
     return (
