@@ -1,0 +1,50 @@
+.steps-container{
+    display: flex;
+    position: relative;
+      left:'100px';
+  }
+    
+    .steps-card {
+    
+       /* Adjust the margin as needed */
+      max-width: 800px;
+      margin: auto;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      position:absolute;
+      right: 110px;
+     
+  
+      
+    }
+  
+    
+    .card-header {
+      background-color:steelblue;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    
+    }
+    
+    .step {
+      padding: 16px;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .step:last-child {
+      border-bottom: none;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* Two columns */
+      gap: 10px; /* Adjust the gap as needed */
+    }
+    
+    .g-col-6 {
+      grid-column: span 6; /* Each item spans 6 columns */
+      padding: 10px;
+      border: 1px solid #ccc;
+      background-color:salmon;
+    }
