@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 export default function QuestionsComponent(props) {
+  const navigate = useNavigate();
   let jsonData = props.jsonData;
 
   const [showModal, setShowModal] = useState(false);
@@ -62,6 +64,10 @@ export default function QuestionsComponent(props) {
       const data = await response.json();
       props.setchangesInData((prev) => !prev);
       toast.success(data.message);
+      console.log(jsonData);
+      // window.location.reload();
+      navigate('/advocate/dashboard/');
+      
     } catch (error) {
       toast.error('Error: ', error);
     }
@@ -92,8 +98,8 @@ export default function QuestionsComponent(props) {
       <button
         style={{
           position: 'fixed',
-          bottom: '39px',
-          right: '95px',
+          top: '39px',
+          right: '25px',
           padding: '7px 10px',
           backgroundColor: '#667eea',
           color: '#fff',
@@ -109,41 +115,31 @@ export default function QuestionsComponent(props) {
         }}
         onClick={handleScrollToTop}
       >
-        <span class="material-symbols-outlined">
-          arrow_upward
-        </span>
+        <span className="material-symbols-outlined">arrow_upward</span>
       </button>
-      <div>
-        <div className="card my-3">
-          <div className="card-header">
-            {jsonData.question}
-          </div>
-          <div className="card-body">
-            <blockquote className="blockquote mb-0">
-              <p>{jsonData.answer}</p>
-            </blockquote>
+
+      {/* Card Layout for Each Question */}
+      <div className="card mb-4 shadow-sm" style={{ borderRadius: '15px', background: 'linear-gradient(to right, #ffffff, #f8f9fa)' }}>
+        <div className="card-body">
+          <h5 className="card-title text-primary">{jsonData.question}</h5>
+          <p className="card-text text-secondary">{jsonData.answer}</p>
+          <p className="text-muted">Category: {jsonData.category}</p>
+          <div className="text-end">
+            <button className="btn btn-outline-primary btn-sm me-2" onClick={handleModalOpen}><i className="bi bi-pencil-square"></i> Edit</button>
+            <button className="btn btn-outline-danger btn-sm" onClick={handleDelete}><i className="bi bi-trash"></i> Delete</button>
           </div>
         </div>
+      </div>
 
-        <div className="row">
-          <div className="col-md-1">
-            <button className='btn btn-primary' onClick={handleModalOpen}
-            >Update</button>
-          </div>
-          <div className="col">
-            <button className='btn btn-danger' onClick={handleDelete}>Delete</button>
-          </div>
-        </div>
-        <hr />
-
-        <div className={`modal fade ${showModal ? 'show' : ''}`} tabIndex="-1" style={{ display: showModal ? 'block' : 'none' }}>
-          <div className="modal-dialog modal-lg">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title">Update Question</h5>
-                <button type="button" className="btn-close" onClick={handleModalClose}></button>
-              </div>
-              <div className="modal-body">
+      {/* Modal for Update */}
+      <div className={`modal fade ${showModal ? 'show' : ''}`} tabIndex="-1" style={{ display: showModal ? 'block' : 'none' }}>
+                <div className="modal-dialog modal-lg">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title">Add New</h5>
+                            <button type="button" className="btn-close" onClick={handleModalClose}></button>
+                        </div>
+            <div className="modal-body">
                 <form className="row g-3">
                   <div className="">
                     <label htmlFor="inputQuestion" className="form-label">
@@ -164,6 +160,7 @@ export default function QuestionsComponent(props) {
                       Answer
                     </label>
                     <textarea
+                      rows={7}
                       type="text"
                       className="form-control"
                       id="inputAnswer"
@@ -175,18 +172,11 @@ export default function QuestionsComponent(props) {
                   </div>
 
                 </form>
-              </div>
-              <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" onClick={handleModalClose}>
-                  Close
-                </button>
-                <button type="button" className="btn btn-secondary" onClick={handleClear}>
-                  Clear
-                </button>
-                <button type="button" className="btn btn-primary" onClick={handleSave}>
-                  Save
-                </button>
-              </div>
+                </div>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-outline-secondary" onClick={handleModalClose}>Close</button>
+              <button type="button" className="btn btn-warning" onClick={handleClear}>Clear</button>
+              <button type="button" className="btn btn-primary" onClick={handleSave}>Save Changes</button>
             </div>
           </div>
         </div>

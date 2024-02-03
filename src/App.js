@@ -20,7 +20,6 @@ import Laws from './Components/pages/Laws';
 import Spinner from './Components/Spinner';
 import Guides from './Components/pages/Guides';
 import LegalAid from './Components/pages/LegalAid/LegalAid';
-import DropDownCheck from './Components/DropDownCheck';
   
 function App() {
 
@@ -44,11 +43,11 @@ function App() {
         setLoading(false);
       }
     };
-    fetchData();
+    fetchData();  
   }, [changesInData]);
 
   const location = useLocation();
-  console.log(location);
+  // console.log(location); 
   const visibleRoutes = [
     '/',
     '/About',
@@ -79,18 +78,15 @@ function App() {
         <Route path='Awareness/laws' element={<Laws/>}/>
         <Route path='Awareness/guides' element={<Guides/>}/>
         <Route path='LegalAid' element={<LegalAid/>}/>
-        <Route path='drop' element={<DropDownCheck/>}/>
-
-
         
-
         <Route path='/admin' element={<AdminPrivateRoute/>}>
           <Route path='dashboard' element={<AdminDasboard />}/>
         </Route>
 
         <Route path='/advocate' element={<AdvocatePrivateRoute/>}>
-          <Route path='dashboard' element={<AdvocateDashBoard jsonData={jsonData} setchangesInData={setchangesInData} loading={loading} />}/>
+          <Route path='dashboard/' element={<AdvocateDashBoard jsonData={jsonData} setchangesInData={setchangesInData} loading={loading} changesInData={changesInData} />}/>
         </Route>
+        
         <Route path="*" element={<Navigate to="pagenotfound" />} />
       </Routes>
 

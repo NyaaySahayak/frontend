@@ -6,6 +6,7 @@ export default function AddnewQuestion(props) {
     const [showModal, setShowModal] = useState(false);
     const [question, setQuestion] = useState('');
     const [answer, setAnswer] = useState('');
+    const [category, setCategory] = useState('');
 
 
     const handleClear = () => {
@@ -36,7 +37,7 @@ export default function AddnewQuestion(props) {
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify({
-                        question, answer
+                        question, answer, category
                     }),
                 })
                 // const data = await response.json();
@@ -56,14 +57,7 @@ export default function AddnewQuestion(props) {
 
     return (
         <>
-
-
-
-
-        
-            
-
-            <button className="btn btn-primary position-fixed top-10 end-0 m-3 " style={{ zIndex: '1000' }} onClick={handleModalOpen}>
+           <button className="btn btn-primary position-fixed top-3 end-0 m-3 " style={{ zIndex: '1000' }} onClick={handleModalOpen}>
                 Add New
             </button>
 
@@ -104,7 +98,26 @@ export default function AddnewQuestion(props) {
                                         onChange={(e) => setAnswer(e.target.value)}
                                     />
                                 </div>
+                                <div>
+                                    <label htmlFor="questions-select">Question Category</label>
+                                    <select name="questions" id="questions-select" onChange={(e) => { setCategory(e.target.value); }}>
+                                        <option value="">Select Category</option>
+                                        <option value="CriminalLaw">Criminal Law</option>
+                                        <option value="FamilyLaw">Family Law</option>
+                                        <option value="EmploymentLaw">Employment Law</option>
+                                        <option value="IntellectualPropertyLaw">Intellectual Property Law</option>
+                                        <option value="BusinessLaw">Business Law</option>
+                                        <option value="CivilLaw">Civil Law</option>
+                                        <option value="FinancialLaw">Financial Law</option>
+                                        <option value="CyberLaw">Cyber Law</option>
+                                        <option value="PropertyLaw">Property Law</option>
+                                        <option value="TaxLaw">Tax Law</option>
+                                        <option value="ConsumerLaw">Consumer Law</option>
+                                        <option value="CommercialLaw">Commercial Law</option>
+                                        <option value="Others">Others</option>
 
+                                    </select>
+                                </div>
                             </form>
                         </div>
                         <div className="modal-footer">

@@ -4,20 +4,17 @@ import char from '../Components/images/char.png';
 import { useSpeechSynthesis } from 'react-speech-kit';
 
 export default function VoiceAssistant(props) {
-
+  const jsonData = props.data;
   const [searchText, setSearchText] = useState('');
   const [repeatButton, setRepeatButton] = useState(true);
-
-  const handleSearch = () => {
-    // console.log('Search Text:', searchText);
-    findanswer(searchText);
-    setRepeatButton(true);
-    setInputSource('text');
-  };
-  //Fetching the data from backend
   const [inputSource, setInputSource] = useState('');
 
-  const jsonData = props.data;
+  const handleSearch = () => {
+    findanswer(searchText);
+    setRepeatButton(true);
+    setInputSource('text'); 
+  };
+
   const { transcript, listening, resetTranscript, isMicrophoneAvailable, browserSupportsSpeechRecognition } = useSpeechRecognition({ onEnd: () => submit() });
   const [mytranscript, newtranscript] = useState(transcript);
   const { speak } = useSpeechSynthesis();
@@ -49,15 +46,14 @@ export default function VoiceAssistant(props) {
       if (bestMatchQuestion) {
         console.log("Answer: ", bestMatchQuestion.answer);
         newtranscript(bestMatchQuestion.answer);
-        if (inputSource === 'voice') {
+        if (inputSource === 'voice') { // Speak only if input was voice
           speak({ text: bestMatchQuestion.answer });
         }
-
       }
       else {
         console.log("No matching answer found for the given question.");
         newtranscript("No matching answer found for the given question.");
-        if (inputSource === 'voice') {
+        if (inputSource === 'voice') { // Speak only if input was voice
           speak({ text: "No matching answer found for the given question." });
         }
       }
@@ -65,8 +61,8 @@ export default function VoiceAssistant(props) {
     else {
       console.log("No questions found in the JSON data.");
       newtranscript("No questions found in the JSON data.");
-      if (inputSource === 'voice') {
-        speak({ text: "No questions found in the JSON data." });
+      if (inputSource === 'voice') { // Speak only if input was voice
+        speak({ text: "No matching answer found for the given question." });
       }
     }
   }
@@ -96,7 +92,7 @@ export default function VoiceAssistant(props) {
     } else {
       setRepeatButton(true);
       findanswer(transcript);
-      setInputSource('voice');  
+      setInputSource('voice'); 
     }
   }
 
@@ -111,10 +107,12 @@ export default function VoiceAssistant(props) {
 
   return (
     <>
-      <div className='container-fluid'>
+       <div className='container-fluid'>
         <div className="row" style={{background: "linear-gradient(90deg, rgba(0,120,183,1) 0%, rgba(7,24,68,1) 100%)"}}>
-          <div className="col-4 d-flex flex-column align-items-center justify-content-center" style={{ height: "85vh" }}>
-            <img src={char} alt='our char' />
+          <div className="col-lg-4 col-md-6 col-sm-12 d-flex flex-column align-items-center justify-content-center" style={{ minHeight: "85vh" }}>
+            
+            {/* Adjusted the image size here */}
+            <img src={char} alt='our char' className="img-fluid" style={{ maxWidth: '90vw' }}/>
             <div className="text-center">
               <button className="btn btn-success" onClick={clicks} style={{ borderRadius: '50%', marginRight: '10px' }}>
                 {listening ? <span className="material-symbols-outlined" style={{ fontSize: '4  5px' }}>
@@ -130,8 +128,9 @@ export default function VoiceAssistant(props) {
 
             </div>
           </div>
-          <div className="col-8 d-flex flex-column align-items-center justify-content-center" style={{ height: "95vh", backgroundColor: "" }} >
-            <div className="input-group container" style={{ width: '480px', marginTop: '9px', padding: '1px' }}>
+          <div className="col-lg-8 col-md-6 col-sm-12 d-flex flex-column align-items-center justify-content-center" style={{ minHeight: "95vh" }}>
+            
+          <div className="input-group" style={{ width: '100%', maxWidth: '450px', margin: '10px' }}>
               <input
                 type="text"
                 className="form-control"
@@ -149,7 +148,7 @@ export default function VoiceAssistant(props) {
                 </span>
               </button>
             </div>
-            <div className="response text-center" id='resu' style={{ height: "80vh", width: "100vh", backgroundColor: transcript || mytranscript ? "rgba(255,255,255,0.5)" : "transparent", transition: "background-color 0.5s ease", borderRadius: "50px" }} >
+            <div className="response text-center" style={{ width: '100%', maxWidth: '650px', minHeight: "60vh", backgroundColor: transcript || mytranscript ? "rgba(255,255,255,0.5)" : "transparent", borderRadius: "50px", padding: "20px" }}>
               <div className="row-2 text-center my-4" style={{ padding: "2%", margin: "2%", fontSize: "18px", fontWeight: "bold" }} >
                 {transcript}
               </div>

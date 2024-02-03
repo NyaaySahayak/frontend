@@ -1,5 +1,9 @@
 export const jsonData = {
-    "data" : [{
+    "data" : [
+      {
+        "question": " Hello hi?",
+        "answer": "Welcome to Nyaay sahayak how can i help you ?"
+      },{
     "question": " What areas of law does Nyaay Sahayak cover?",
     "answer": "Nyaay Sahayak specializes in various legal areas, including but not limited to family law, criminal law, business law, and estate planning."
   },
