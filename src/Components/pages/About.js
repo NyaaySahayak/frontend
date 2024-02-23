@@ -66,25 +66,25 @@ const card={
 </div>
 </div>
 
-<div class="feature-container" style={feature}>
-        <div class="card" style={card}>
-            <div class="card-body">
-                <h5 class="card-title">User-Friendly Interface</h5>
-                <p class="card-text">Our platform is designed with simplicity in mind, making it easy for anyone to access the information and assistance they need.</p>
+<div className="feature-container" style={feature}>
+        <div className="card" style={card}>
+            <div className="card-body">
+                <h5 className="card-title">User-Friendly Interface</h5>
+                <p className="card-text">Our platform is designed with simplicity in mind, making it easy for anyone to access the information and assistance they need.</p>
             </div>
         </div>
 
-        <div class="card" style={card}>
-            <div class="card-body">
-                <h5 class="card-title">Reliable Information</h5>
-                <p class="card-text">Rest assured that the information provided by Nyaay Sahayak is accurate, up-to-date, and vetted by legal professionals.</p>
+        <div className="card" style={card}>
+            <div className="card-body">
+                <h5 className="card-title">Reliable Information</h5>
+                <p className="card-text">Rest assured that the information provided by Nyaay Sahayak is accurate, up-to-date, and vetted by legal professionals.</p>
             </div>
         </div>
 
-        <div class="card" style={card}>
-            <div class="card-body">
-                <h5 class="card-title">Comprehensive Support</h5>
-                <p class="card-text">From basic queries to complex legal issues, we strive to be your one-stop solution, offering guidance at every stage.</p>
+        <div className="card" style={card}>
+            <div className="card-body">
+                <h5 className="card-title">Comprehensive Support</h5>
+                <p className="card-text">From basic queries to complex legal issues, we strive to be your one-stop solution, offering guidance at every stage.</p>
             </div>
         </div>
     </div>
