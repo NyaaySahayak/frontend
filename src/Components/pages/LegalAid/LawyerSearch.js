@@ -45,7 +45,7 @@ const LawyerSearch = ({ searchQuery, onSearch }) => {
   }, [filterLawyers]);
 
   return (
-    <div className="container lawyer-search">
+    <div className="container-fluid lawyer-search">
       <div className="searchBar">
         <input
           placeholder="Search..."
@@ -69,7 +69,7 @@ const LawyerSearch = ({ searchQuery, onSearch }) => {
               ) : displayedLawyers.length === 0 ? (
                 <p className="no-lawyers-found">No lawyers found!</p>
               ) : (
-                displayedLawyers.map((lawyer) => (
+                displayedLawyers.slice(0, 6).map((lawyer) => (
                   <div className="boxx" key={lawyer._id}>
                     <div className="box">
                       <div className="bottom">

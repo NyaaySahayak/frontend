@@ -17,27 +17,31 @@ const Rights = () => {
     setActiveDiv(divNumber);
   };
   
+  
 
   return (
     <>
-<div  style={{"background-color":"#F9E8d9","height":"100%","display":"flex","flexDirection":"row","fontSize":"x-large" }}>
-    <div style={{"backgroundColor":"#F9E8D9","display":"flex","flexDirection":"column","width":"25%"}}>
-      <button  onClick={() => showDiv(1)} style={{"height":"10%","margin":"2%","border":"2px solid transparent","backgroundColor":"transparent"}}>Right to equality</button>
-      <button onClick={() => showDiv(2)} style={{"height":"10%","margin":"2%","border":"2px solid transparent","backgroundColor":"transparent"}}>Right to freedom</button>
-      <button onClick={() => showDiv(3)} style={{"height":"10%","margin":"2%","border":"2px solid transparent","backgroundColor":"transparent"}}>Right to constitutional remedies</button>
-      <button onClick={() => showDiv(4)} style={{"height":"10%","margin":"2%","border":"2px solid transparent","backgroundColor":"transparent"}}>Right to Privacy</button>
-      <button onClick={() => showDiv(5)} style={{"height":"10%","margin":"2%","border":"2px solid transparent","backgroundColor":"transparent"}}>Right to Information</button>
-       <button onClick={() => showDiv(6)} style={{"height":"10%","margin":"2%","border":"2px solid transparent","backgroundColor":"transparent"}}>Right to Education</button>
-       <button onClick={() => showDiv(7)} style={{"height":"10%","margin":"2%","border":"2px solid transparent","backgroundColor":"transparent"}}>Cultural and Educational Rights</button>
-       <button onClick={() => showDiv(8)} style={{"height":"10%","margin":"2%","border":"2px solid transparent","backgroundColor":"transparent"}}>Right to Work</button>
+<div  style={{"backgroundColor":"#F9E8d9","display":"flex","flexDirection":"row","fontSize":"x-large" }}>
+  <div className='row m-3'>
+  <div className='col-md-3 sm-12 container-fluid p-2 m-2 border border-dark '>
+      <button className='btn btn-light btn-block mb-2' onClick={() => showDiv(1)} style={{"height":"10%","margin":"2%","border":"2px solid transparent","backgroundColor":"transparent",color:'black'}}>Right to equality</button>
+      <button  className='btn btn-light btn-block mb-2' onClick={() => showDiv(2)} style={{"height":"10%","margin":"2%","border":"2px solid transparent","backgroundColor":"transparent",color:'black'}}>Right to freedom</button>
+      <button className='btn btn-light btn-block mb-2' onClick={() => showDiv(3)} style={{"height":"10%","border":"2px solid transparent",marginRight:'1px',
+      "backgroundColor":"transparent",color:'black',alignItems:'center'}}>Right to constitutional remedies</button>
+      <button  className='btn btn-light btn-block mb-2' onClick={() => showDiv(4)} style={{"height":"10%","margin":"2%","border":"2px solid transparent","backgroundColor":"transparent",color:'black'}}>Right to Privacy</button>
+      <button className='btn btn-light btn-block mb-2'  onClick={() => showDiv(5)} style={{"height":"10%","margin":"2%","border":"2px solid transparent","backgroundColor":"transparent",color:'black'}}>Right to Information</button>
+       <button className='btn btn-light btn-block mb-2 fs-md-4 fs-sm-6'  onClick={() => showDiv(6)} style={{"height":"10%","margin":"2%","border":"2px solid transparent","backgroundColor":"transparent",color:'black'}}>Right to Education</button>
+       <button className='btn btn-light btn-block mb-2' onClick={() => showDiv(7)} style={{"height":"10%","border":"2px solid transparent",alignItems:"center",backgroundColor:"transparent",color:'black',justifyContent:'center'}}>Cultural and Educational Rights</button>
+       <button className='btn btn-light btn-block mb-2'  onClick={() => showDiv(8)} style={{"height":"10%","margin":"2%","border":"2px solid transparent","backgroundColor":"transparent",color:'black'}}>Right to Work</button>
     </div>
-     <div style={{"backgroundColor":"white","dispay":"flex","flexDirection":"column","width":"90%","padding":"1%"}}>
-{activeDiv===0 && <img src={combo} alt="srishma" style={{"height":"850px"}}/> }
-{activeDiv === 1  && <div><img src={equal} class="rounded float-start" alt="srishma" style={{"height":"17rem","margin":"25px"}}/> <h1>Right to Equality (Articles 14 - 18)</h1> <p style={{"padding":"2%","fontFamily":"calligraphy","fontWeight":"bold"}}>"The right to equality provides for the equal treatment of everyone before the law, prevents discrimination on various grounds, treats everybody as equals in matters of public employment, and abolishes untouchability"</p>
+    <div className='col-md-8 sm-12 container-fluid m-3'>
+     
+{activeDiv===0 && <img src={combo} alt="srishma" style={{"height":"100vh",width:'100%'}}/> }
+{activeDiv === 1  && <div className='conatiner-fluid md-6 sm-12 '><img src={equal} className="image-fluid" alt="srishma" style={{ maxWidth: '60%', maxHeight: '60%' }} /> <h1>Right to Equality (Articles 14 - 18)</h1> <p style={{"padding":"2%","fontFamily":"calligraphy","fontWeight":"bold"}}>"The right to equality provides for the equal treatment of everyone before the law, prevents discrimination on various grounds, treats everybody as equals in matters of public employment, and abolishes untouchability"</p>
 <br/>
 <p>Below we provide the associated articles of the Constitution under the right to equality.</p>
 
-<table class="table table-striped">
+<table className="table table-striped">
   <thead>
     <tr>
       <th scope="col">Article </th>
@@ -73,10 +77,10 @@ const Rights = () => {
 </table>
 </div>}
 
-{activeDiv === 2 && <div><img src={freedo} class="rounded float-start" alt="..." /><h1>Right to Freedom (Articles 19 - 22)</h1>
+{activeDiv === 2 && <div className='conatiner-fluid md-6 sm-12'><img src={freedo} className="image-fluid" alt="..." style={{ maxWidth: '60%', maxHeight: '60%' }} /><h1>Right to Freedom (Articles 19 - 22)</h1>
 <p>The Right To Freedom is a fundamental right guaranteed by the Indian Constitution. This right is enshrined in Article 19 of the Constitution, and it guarantees citizens of India the following freedoms: freedom of speech and expression, freedom of assembly, freedom to form associations or unions, freedom to move freely throughout the country, and freedom to reside in any part of the country. In this article, we will discuss these freedoms in more detail and explain how they are protected by the Indian Constitution.</p>
 <p style={{"fontFamily":"calligraphy","fontWeight":"bold"}}>The right to freedom guarantees freedom for citizens to live a life of dignity among other things. These are given in Articles 19, 20, 21A and 22 of the Indian Constitution.</p>
-<table class="table table-striped">
+<table className="table table-striped">
   <thead>
     <tr>
       <th scope="col">Article </th>
@@ -118,7 +122,7 @@ const Rights = () => {
 </table>
 </div>}
 
-{activeDiv === 3 && <div><img src={cons} class="rounded float-start" alt="..." style={{"height":"18rem"}}/><h1>Right to Constitutional Remedies</h1>
+{activeDiv === 3 && <div className='conatiner-fluid md-6 sm-12'><img src={cons} className="image-fluid" alt="..."  style={{ maxWidth: '60%', maxHeight: '60%' }} /><h1>Right to Constitutional Remedies</h1>
 <p>Article 226  and Article 32 of the Indian Constitution provide for the right to constitutional remedies. This article is a fundamental right and guarantees equality in every aspect. Constitutional remedies are available to every citizen of India. A writ petition is a formal request made to a court for the enforcement of a constitutional right.</p>
 <h1>What is a Writ Petition?</h1>
 <p>A writ petition is a legal document that is filed in a court of law to request relief from an authority against the violation of fundamental rights. It is a fundamental right guaranteed by article 226 and Article 32 of the Indian Constitution which ensures equality in every aspect.
@@ -145,7 +149,7 @@ The writ petition is filed when an individual’s fundamental rights are violate
 Right to Constitutional Remedies is a fundamental right guaranteed by the Constitution of India. It is a safeguard against arbitrary action by the state. This right is available to all citizens, irrespective of their caste, creed, or religion.</p>
 </div>}
 
-{activeDiv === 4 && <div><img src={privacy} class="rounded float-start" alt="..." style={{"height":"18rem","margin":"25px"}}/>
+{activeDiv === 4 && <div className='conatiner-fluid md-6 sm-12'><img src={privacy} className="image-fluid" alt="..."  style={{ maxWidth: '60%', maxHeight: '60%' }} />
 <h1>Right to Privacy – Article 21</h1>
 <p>Article 21 of the Indian Constitution speaks about-
   <br></br>
@@ -170,7 +174,7 @@ Right to Constitutional Remedies is a fundamental right guaranteed by the Consti
 </ul>
 </div>}
 
-{activeDiv === 5 && <div><img src={info} class="rounded float-start" alt="..." style={{"height":"18rem","margin":"25px"}}/>
+{activeDiv === 5 && <div className='conatiner-fluid md-6 sm-12'><img src={info} className="image-fluid" alt="..."  style={{ maxWidth: '60%', maxHeight: '60%' }} />
         <p>RTI stands for Right to Information. Right to Information Act 2005 mandates timely response to citizen requests for government information. Right to Information empowers every citizen to seek any information from the Government, inspect any Government documents and seek certified photocopies thereof. Right to Information also empowers citizens to official inspect any Government work or to take the sample of material used in any work.</p>
         <h1>What type of information can be requested through RTI?</h1>
         <p>The citizens can seek any information from the government authorities that the government can disclose to the parliament.
@@ -203,7 +207,7 @@ thirty days or 48 hours, as the case may be.
         </div>}
 
 
-        {activeDiv === 6 && <div><img src={educ} class="rounded float-start" alt="..." style={{"height":"18rem","margin":"25px"}}/>
+        {activeDiv === 6 && <div className='conatiner-fluid md-6 sm-12'><img src={educ} className="image-fluid" alt="..."  style={{ maxWidth: '60%', maxHeight: '60%' }} />
         <h1>Right to Education Act (RTE) </h1>
         <p>The Act is completely titled “the Right of Children to Free and Compulsory Education Act”. It was passed by the Parliament in August 2009. When the Act came into force in 2010, India became one among 135 countries where education is a fundamental right of every child.</p>
         <ul style={{"list-style-type":"disc"}}>
@@ -239,7 +243,7 @@ The article incorporates the word “free” in its title. What it means is that
 
         </div>}
 
-        {activeDiv === 7 && <div><img src={cultur} class="rounded float-start" alt="..." style={{"height":"18rem","margin":"25px"}}/>
+        {activeDiv === 7 && <div className='conatiner-fluid md-6 sm-12'><img src={cultur} className="image-fluid max-image" alt="..." style={{ maxWidth: '60%', maxHeight: '60%' }} />
         <h1>Cultural & Educational Rights (Articles 29 & 30) </h1>
         <p>Fundamental Rights guarantee basic rights to the citizens of India. There are six fundamental rights enshrined in the Constitution of India, and Articles 29 and 30 deals with the cultural and educational rights of Indian citizens. </p>
         <ol>
@@ -256,7 +260,7 @@ The article incorporates the word “free” in its title. What it means is that
        </div>}
 
 
-        {activeDiv === 8 && <div><img src={work} class="rounded float-start" alt="..." style={{"height":"18rem","margin":"25px"}}/><h1>Right-to-Work Law</h1>
+        {activeDiv === 8 && <div className='conatiner-fluid md-6 sm-12'><img src={work} className="image-fluid" alt="..."/><h1>Right-to-Work Law</h1>
         <h1>Right to Work</h1>
         <p>The right to work is the concept that people have a human right to work, or engage in productive employment, and may not be prevented from doing so.</p>
         <h3>Broader understanding of the right to work:</h3>
@@ -269,6 +273,7 @@ The article incorporates the word “free” in its title. What it means is that
           <li>However, it has to be noted that MGNREGA only ensures the right to work as a statutory right, which can be amended or withdrawn as per the government’s whims and fancies.</li>
         </ul>
         </div>}
+</div>
 </div>
 </div>
       

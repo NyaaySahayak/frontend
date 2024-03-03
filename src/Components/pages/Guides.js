@@ -1,390 +1,236 @@
-import React, { useState } from "react";
-
-import './stepscard.css';
-
+import React from "react";
+import { Link } from "react-router-dom";
 export default function Guides() {
-    const [selectedContent, setSelectedContent] = useState("Passport");
-
-
-    const handleButtonClick = (content) => {
-        setSelectedContent(content);
-
-    };
-
     return (
-        <div style={{ backgroundColor: "white", backgroundSize: 'cover', height: '100%' }}>
-
-
-            {/* Add other styling for your outer container as needed */}
-            <>
-                <div className="button-container" style={{ textAlign: 'center' }}>
-                    <button style={{ margin: '60px', backgroundColor: "Green" }} onClick={() => handleButtonClick("Passport")}>
-                        Passport
-                    </button>
-                    <button style={{ margin: '60px', backgroundColor: "green" }} onClick={() => handleButtonClick("Aadhar card")}>
-                        Aadhar card
-                    </button>
-                    <button style={{ margin: '60px', backgroundColor: "green" }} onClick={() => handleButtonClick("License")}>
-                        License
-                    </button>
-                    <button style={{ margin: '60px', backgroundColor: "green" }} onClick={() => handleButtonClick("Voter ID")}>
-                        Voter ID
-                    </button>
-                    <button style={{ margin: '60px', backgroundColor: "green" }} onClick={() => handleButtonClick("PAN Card")}>
-                        PAN Card
-                    </button>
+        <>
+            <div style={{ "display": "flex" }}>
+                <div className="row">
+                {/* <div className="col-4 d-flex flex-column align-items-center justify-content-center" style={{ height: "95vh",position:'absolute',top:2,left:15 }}>
+                <button style={{position:'absolute'}}>FIR</button>
+                <button style={{position:'absolute'}}>Aadhar</button>
+                <button style={{position:'absolute'}}>passport</button>
+                <button style={{position:'absolute'}}>Pan Card</button>
+                <button style={{position:'absolute'}}>Voter ID</button>
+                <button style={{position:'absolute'}}>License</button> 
+</div> */}
+                <div className="col sm-12 col-md-4">
+                    <div className='list-group'>
+                        <li className="list-group-item text-center">Table of contents</li>
+                        <div className="list-group" id="list-tab" role="tablist">
+                            <Link className="list-group-item list-group-item-action text-center" id="list-aadhar-list" data-bs-toggle="list" to="#list-aadhar" role="tab" aria-controls="list-aadhar">Aadhar Card</Link>
+                            <Link className="list-group-item list-group-item-action text-center" id="list-pan-list" data-bs-toggle="list" to="#list-pan" role="tab" aria-controls="list-pan">Pan Card</Link>
+                            <Link className="list-group-item list-group-item-action text-center" id="list-passport-list" data-bs-toggle="list" to="#list-passport" role="tab" aria-controls="list-passport">Passport</Link>
+                            <Link className="list-group-item list-group-item-action text-center" id="list-license-list" data-bs-toggle="list" to="#list-license" role="tab" aria-controls="list-license">License</Link>
+                        </div>
+                    </div>
                 </div>
 
+                <div className="col sm-12 col-md-8">
+                    <div className="tab-content" id="nav-tabContent">
+                        <div className="tab-pane fade text-center" id="list-aadhar" role="tabpanel" aria-labelledby="list-aadhar-list">
+                            <div className="card">
+                                {/* <img src="aadhar.png" className="card-img-top mx-auto d-block w-25" alt="..."/> */}
+                                <div className="card-body" role='tabpanel' aria-labelledby='list-aadhar-list'>
+                                    <h5 className="card-title-center">How to apply for Aadhar card online?</h5>
+                                    <p className="card-text-center">The Online Application Process<br></br>
+                                        Follow these simple steps:<br></br>
 
+                                        <strong>step 1: Visit the Official UIDAI Website</strong><br></br>
+                                        Head over to the official UIDAI website by typing "https://uidai.gov.in/" into your web browser. This website is user-friendly and provides all the necessary information related to Aadhaar.<br></br>
 
+                                        <strong>step 2: Locate the "Apply for Aadhaar" Option</strong><br></br>
+                                        On the homepage, look for the "Aadhaar Enrolment" section. Click on "Apply for Aadhaar" or "Apply for a new Aadhaar card online," whichever is available.<br></br>
 
+                                        <strong>Step 3: Fill in the Required Details</strong><br></br>
+                                        You'll be redirected to a new page where you need to fill in your demographic and biometric information. Ensure that you provide accurate details, as any discrepancies might lead to delays in processing your application.<br></br>
 
+                                        <strong>Step 4: Choose an Aadhaar Enrolment Center</strong><br></br>
+                                        After filling in the necessary details, you must select an Aadhaar Enrolment Center. The website allows you to search for nearby centers, making choosing the nearest one convenient.<br></br>
 
+                                        <strong>step 5: Book an Appointment</strong><br></br>
+                                        To avoid long waiting times, booking an appointment at the selected Aadhaar Enrolment Center is advisable. You can do this online through the UIDAI portal.<br></br>
 
+                                        <strong>step 6: Visit the Enrolment Center</strong><br></br>
+                                        On the scheduled date and time, visit the Enrolment Center with all your necessary documents. Here, an official will verify your documents and capture your biometric data, including fingerprints and iris scans.<br></br>
 
-                {selectedContent && (
-                    <div>
-
-
-
-
-                        {selectedContent === "Passport" &&
-                            (
-                                <div>
-
-                                    <div className="steps-card"  >
-
-                                        <div className="card-header" style={{ height: '50px' }}>
-                                            <h2 style={{ fontStyle: 'oblique' }}><strong> Passport Application Process</strong></h2>
-                                        </div>
-
-                                        {/* Step 1 */}
-                                        <div className="step" style={{ height: '200px', fontFamily: "unset", backgroundColor: "light blue" }}>
-                                            <h5><strong> 1. Log in to the Passport Seva portal</strong></h5>
-                                            <p><strong>Step 1:</strong>Visit the Passport Seva platform online and click on “New User Registration” or “Existing User Login”, based on your registration status.</p>
-                                            <p><strong>Step 2:</strong>As a new user, you can follow the registration process. (Existing users can move to the next step.)</p>
-                                            <p><strong>Step 3:</strong>Use your credentials (password and login ID) and complete captcha verification to log in.</p>
-                                        </div>
-
-                                        {/* Step 2 */}
-                                        <div className="step" style={{ height: '120px' }}>
-                                            <h5><strong>2. Select a type of passport application</strong></h5>
-                                            <p> Fresh passport or Reissue of passport</p>
-                                            <p>  Official passport or diplomatic passport</p>
-                                        </div>
-
-                                        {/* Step 3 */}
-                                        <div className="step" style={{ height: '170px' }}>
-                                            <h5> <strong>3. Fill out your online application</strong></h5>
-                                            <p><strong>Step 1:</strong>Click on the type of passport application you want to apply for.</p>
-                                            <p><strong>Step 2:</strong> Fill in the requested details accurately.</p>
-                                            <p><strong>Step 3:</strong>Check all details carefully and hit the “Submit” button.</p>
-                                        </div>
-                                        <div className="step" style={{ height: '270px' }}>
-                                            <h5><strong>4. Pay the fees and schedule an appointment</strong></h5>
-                                            <p><strong>Step 1:</strong> Head back to the home page to select the option “View Saved/Submitted Applications”.</p>
-                                            <p><strong>Step 2:</strong> Now, choose the option “Pay and Schedule Appointment” among all choices visible on your screen</p>
-                                            <p><strong>Step 3:</strong>Select the PSK or Passport Seva Kendra and schedule an appointment</p>
-                                            <p><strong>Step 4:</strong>Pay the requested fees for the process through the online payment mode of your choice</p>
-                                            <p><strong>Step 5:</strong> Take a printout of the application receipt or refer to the SMS sent to your mobile phone containing your Application Reference Number (ARN)</p>
-                                        </div>
-                                        <div className="step" style={{ height: '80px' }}>
-                                            <p>Finally, you can pay a visit to the selected PSK on the date and time of your appointment, carrying all the original documents for verification</p>
-                                        </div>
-                                    </div>
-                                    <div className="image-card" style={{ position: 'absolute', left: '110px', top: '230px' }}>
-                                        <img src="https://wallpapers.com/images/hd/passport-pictures-huctncquz2fzv1ht.jpg" alt="Your Image" style={{ width: '300px', height: '300px', borderRadius: '6px' }} />
-                                        <br></br>
-                                        <br></br>
-                                        <h4><strong>Documents Required</strong></h4>
-                                        <br></br>
-
-                                        <div className="grid text-center">
-                                            <div className="g-col-6" style={{ borderRadius: '5px' }}><strong>Photo ID Proof</strong></div>
-                                            <br></br>
-                                            <div className="g-col-6" style={{ borderRadius: '5px' }}><strong>Address Proof</strong></div>
-                                            <br></br>
-                                            <div className="g-col-6" style={{ borderRadius: '5px' }}><strong>Birth Certificate</strong></div>
-                                            <br></br>
-                                            <div className="g-col-6" style={{ borderRadius: '5px' }}><strong>Passport Size Photos</strong></div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            )}
-
-
-                        {selectedContent === "Aadhar card" && (
-                            <div>
-                                <div className="steps-card">
-
-                                    <div className="card-header" style={{ height: '50px' }}>
-                                        <h2><strong>How to apply for Aadhar card ?</strong></h2>
-                                    </div>
-
-                                    {/* Step 1 */}
-                                    <div className="step" style={{ height: '130px' }}>
-                                        <h5><strong>step 1: Visit the Official UIDAI Website</strong></h5>
-                                        <p> Head over to the official UIDAI website by typing "https://uidai.gov.in/" into your web browser. This website is user-friendly and provides all the necessary information related to Aadhaar.</p>
-                                    </div>
-
-                                    {/* Step 2 */}
-                                    <div className="step" style={{ height: '125px' }}>
-                                        <h5><strong>step 2: Locate the "Apply for Aadhaar" Option</strong></h5>
-                                        <p> On the homepage, look for the "Aadhaar Enrolment" section. Click on "Apply for Aadhaar" or "Apply for a new Aadhaar card online," whichever is available.</p>
-                                    </div>
-
-                                    {/* Step 3 */}
-                                    <div className="step" style={{ height: '130px' }}>
-                                        <h5><strong>Step 3: Fill in the Required Details</strong></h5>
-                                        <p>   You'll be redirected to a new page where you need to fill in your demographic and biometric information. Ensure that you provide accurate details, as any discrepancies might lead to delays in processing your application.</p>
-                                    </div>
-                                    <div className="step" style={{ height: '130px' }}>
-                                        <h5><strong>Step 4: Choose an Aadhaar Enrolment Center</strong></h5>
-                                        <p>After filling in the necessary details, you must select an Aadhaar Enrolment Center. The website allows you to search for nearby centers, making choosing the nearest one convenient.</p>
-                                    </div>
-                                    <div className="step" style={{ height: '120px' }}>
-                                        <h5><strong>step 5: Book an Appointment</strong></h5>
-                                        <p>   To avoid long waiting times, booking an appointment at the selected Aadhaar Enrolment Center is advisable. You can do this online through the UIDAI portal.</p>
-                                    </div>
-                                    <div className="step" style={{ height: '130px' }}>
-                                        <h5><strong>step 6: Visit the Enrolment Center</strong></h5>
-                                        <p> On the scheduled date and time, visit the Enrolment Center with all your necessary documents. Here, an official will verify your documents and capture your biometric data, including fingerprints and iris scans.</p>
-                                    </div>
-                                    <div className="step" style={{ height: '130px' }}>
-                                        <h5><strong>step 7: Collect Your Acknowledgement Slip</strong></h5>
-                                        <p> Once the process is complete, you will receive an acknowledgment slip. This slip contains an enrolment number that you can use to check the status of your Aadhaar card application</p>
-                                    </div>
-                                </div>
-                                <div className="image-card" style={{ position: 'absolute', left: '110px', top: '230px' }}>
-                                    <img src="https://aadhaarcard.co.in/wp-content/uploads/2023/04/aadhaar-card.webp" alt="Your Image" style={{ width: '300px', height: '300px', borderRadius: '6px' }} />
-                                    <br></br>
-                                    <br></br>
-                                    <h4><strong>Documents Required</strong></h4>
-                                    <br></br>
-
-                                    <div className="grid text-center">
-                                        <div className="g-col-6" style={{ borderRadius: '5px' }}><strong>Identity Proof</strong></div>
-                                        <br></br>
-                                        <div className="g-col-6" style={{ borderRadius: '5px' }}><strong>Address Proof</strong></div>
-                                        <br></br>
-                                        <div className="g-col-6" style={{ borderRadius: '5px' }}><strong>Birth Certificate</strong></div>
-
-                                    </div>
+                                        <strong>step 7: Collect Your Acknowledgement Slip</strong><br></br>
+                                        Once the process is complete, you will receive an acknowledgment slip. This slip contains an enrolment number that you can use to check the status of your Aadhaar card application</p>
+                                    {/* <p>
+    <label for="aadharInput" class="form-label"></label>
+        <input
+            type="password"
+            class="form-control"
+            name="password"
+            id="aadharInput"
+            placeholder="Enter your aadhar number"
+        />
+    
+    <button
+        type="submit"
+        class="btn btn-primary"
+    >
+        Save
+    </button></p> */}
                                 </div>
                             </div>
-
-                        )}
-
-                    </div>
-
-
-
-
-                )}
-                {selectedContent === "License" && (
-                    <div>
-                        <div className="steps-card" style={{ width: "1200px" }}>
-
-                            <div className="card-header" style={{ height: '50px' }}>
-                                <h3><strong>Steps to follow for New Driving License</strong></h3>
-                            </div>
-
-                            {/* Step 1 */}
-                            <div className="step" style={{ height: '65px' }}>
-
-                                <p><strong> Step 1:</strong> Visit https://sarathi.parivahan.gov.in</p>
-                            </div>
-
-                            {/* Step 2 */}
-                            <div className="step" style={{ height: '65px' }}>
-
-                                <p> <strong>Step 2:</strong> Select concerned state</p>
-                            </div>
-
-                            {/* Step 3 */}
-                            <div className="step" style={{ height: '70px' }}>
-
-                                <p><strong>Step 3:</strong>Click on "New Driving Licence" from "Driving Licence" menu</p>
-                            </div>
-                            <div className="step" style={{ height: '70px' }}>
-
-                                <p><strong>Step 4:</strong> Enter your "Learning License Number" & "Date of Birth" to proceed further</p>
-                            </div>
-                            <div className="step" style={{ height: '70px' }}>
-
-                                <p><strong>Step 5:</strong> Fill up application Form</p>
-                            </div>
-                            <div className="step" style={{ height: '70px' }}>
-
-                                <p><strong>Step 6:</strong>Click on Next Button to proceed</p>
-                            </div>
-                            <div className="step" style={{ height: '70px' }}>
-
-                                <p><strong>Step 7:</strong> Visit RTO on scheduled date with original documents & Fee Slip</p>
-                            </div>
-                        </div>
-                        <div className="image-card" style={{ position: 'absolute', left: '110px', top: '220px' }}>
-                            <img src="https://www.godigit.com/content/dam/godigit/directportal/en/contenthm/telangana-driving-licence.jpg" alt="Your Image" style={{ width: '300px', height: '300px', borderRadius: '6px' }} />
-                            <br></br>
-                            <br></br>
-                            <h4><strong>Documents Required</strong></h4>
-                            <br></br>
-
-                            <div className="grid text-center">
-                                <div className="g-col-6" style={{ borderRadius: '5px' }}><strong>Age Proof</strong></div>
-                                <br></br>
-                                <div className="g-col-6" style={{ borderRadius: '5px' }}><strong>Address Proof</strong></div>
-
-
-                            </div>
                         </div>
 
-                    </div>
-                )}
-                {selectedContent === "Voter ID" && (
-                    <div>
-                        <div className="steps-card">
+                        <div className="tab-pane fade text-center" id="list-pan" role="tabpanel" aria-labelledby="list-pan-list">
+                            <div className="card" role='tabpanel' aria-labelledby='list-pan-list'>
+                                {/* <img src="pan.png" className="card-img-top mx-auto d-block w-25" alt="..."/> */}
+                                <h5 className="card-title-center"> </h5>
+                                <p className="card-text-center"><strong>How to apply for PAN Card Online via NSDL Website</strong><br></br>
+                                    Step 1: Select the PAN card application - 'New PAN Indian Citizen (Form 49A)' available on the NSDL website. <br></br>
 
-                            <div className="card-header" style={{ height: '50px' }}>
-                                <h3><strong>How to Apply for Voter ID Card ?</strong></h3>
-                            </div>
+                                    Step 2: Fill in all the details in the form. Read the detailed instructions before filling the details on the PAN card application form. Click here to view the PAN card application instructions.<br></br>
 
-                            {/* Step 1 */}
-                            <div className="step" style={{ height: '80px' }}>
+                                    Step 3: Pay the required fees. The PAN card application fees varies on the option you choose for dispatch of your PAN card. Payment can be made through credit/debit card, demand draft or net-banking. Upon successful payment, acknowledgment will be displayed through which you can check your application status. It will also be sent to your email ID. <br></br>
 
-                                <p><strong> Step 1:</strong>Go to website of the Chief Electoral Officer Telangan and click on the 'E-registration' tab on the top of the homepage</p>
-                            </div>
+                                    Step 4: Send the required documents through courier/post to the NSDL office, Pune. Only after the receipt of the documents, PAN application would be processed by NSDL. Once the NSDL verifies the application and documents, it will issue the PAN card in 15 days.<br></br>
+                                    <br></br>
+                                    <strong>
+                                        How to Apply for PAN card Offline?</strong><br></br><strong>
+                                        Step 1: </strong>Download the ‘Form 49A’ from the NSDL e-Gov website.<br></br> <strong>
 
-                            {/* Step 2 */}
-                            <div className="step" style={{ height: '75px' }}>
+                                        Step 2:</strong> Fill in the details in the application.<br></br><strong>
 
-                                <p> <strong>Step 2:</strong>Select the 'Assembly Constituency' tab from the drop-down menu and click on 'NVSP' from the options provided.</p>
-                            </div>
+                                        Step 3:</strong> Attach your signature and photograph to the application. <br></br><strong>
 
-                            {/* Step 3 */}
-                            <div className="step" style={{ height: '65px' }}>
+                                        Step 4:</strong>Submit the form and the required documents to the nearest PAN centre.<br></br><strong>
 
-                                <p><strong>Step 3:</strong>You will be redirected tona new page .Slect the 'Form 6 for New Uset's from the option.</p>
-                            </div>
-                            <div className="step" style={{ height: '75px' }}>
+                                        Step 5:</strong> Pay the fees for PAN card application.<br></br> <strong>
 
-                                <p><strong>Step 4:</strong>Fill in the online form with details such as name,address,date of birth,current residence and the declaration.</p>
-                            </div>
-                            <div className="step" style={{ height: '65px' }}>
+                                        Step 6:</strong> You will get the acknowledgement number from which you can track the status of your PAN card application status.<br></br>
 
-                                <p><strong>Step 5:</strong>Upload the supporting documents as mentioned in the form and submit them.</p>
-                            </div>
-                            <div className="step" style={{ height: '75px' }}>
+                                    Once the documents are verified, a PAN card will be issued within 15 days.<br></br>
+                                    <br></br><strong>How To Make Corrections/Updates In PAN?</strong><br></br>
+                                    If you want to make changes in the existing PAN such as change in name, date of birth etc, you can apply for it online. The procedure is almost the same as you apply for new PAN except in case of corrections in PAN, you also need to submit the documents to support the change required in PAN.<br></br>
 
-                                <p><strong>Step 6:</strong>On submission, an application reference number will be generated that serves as a receipt as well as a tracking number.</p>
-                            </div>
-                            <div className="step" style={{ height: '80px' }}>
+                                    Here are the steps :<br></br><strong>
 
-                                <p><strong>Step 7:</strong>Once the application has been processed,a Booth Level Officer(BLO) will visit to verify the details as mentioned in the form and documents.</p>
-                            </div>
-                            <div className="step" style={{ height: '75px' }}>
+                                        Step 1:</strong> Fill the online application form for making changes/corrections in PAN on the NSDL website. <br></br><strong>
 
-                                <p><strong>Step 8:</strong>On successful verification,the voter ID card will be sent by post to the address as mentioned on the application form.</p>
+                                        Step 2:</strong> Pay the application fees. The payment of application fee can be made through credit/debit card, demand draft or net-banking. On successful payment, acknowledgement will be displayed. Save and print this acknowledgement number.<br></br><strong>
+
+                                        Step 3:</strong> Once the application and payment are accepted, the applicant is required to send the supporting documents through courier/post to NSDL. Only after the receipt of the documents, PAN application would be processed by NSDL. Documents sent should support the changes applied for in PAN. Example, request for the change in applicant’s or father’s name will have to be supported with a document that will contain proof of change of name from old to new. The documents that shall be accepted as proof in this case are:<br></br>
+
+                                    For married ladies Change of name on account of marriage – marriage certificate, marriage invitation card, publication of ‘name-change’ in the gazette, a certificate from a gazetted officer stating name change, copy of passport showing husband’s name.<br></br>
+                                    For individual applicants other than married ladies Publication of ‘name-change’ in the gazette, a certificate from a gazetted officer stating name change.<br></br>
+                                    For companies ROC’s certificate for name change is required. ROC stands for Registrar of Companies, and they handle administration and regulation of Companies Act, 1956.<br></br>
+                                    For partnership firms A copy of revised Partnership Deed<br></br>
+                                    For other categories which are registered organizations (AOP/Trust/BOI/AJP etc.) The revised registration/deed/agreement.</p>
+                                {/*<p>
+    <label for="panInput" class="form-label"></label>
+        <input
+            type="password"
+            class="form-control"
+            name="password"
+            id="panInput"
+            placeholder="Enter your PAN Card number"
+        />
+    
+    <button
+        type="submit"
+        class="btn btn-primary"
+    >
+        Save
+    </button>
+    </p> */}
                             </div>
                         </div>
-                        <div className="image-card" style={{ position: 'absolute', left: '110px', top: '220px' }}>
-                            <img src="https://5.imimg.com/data5/SELLER/Default/2023/7/326236311/DG/UC/NY/147613454/613b4fe5118d68e33daead1f-5f9ce9d6b395d08d26991e6e-voter-id-2x-min.jpg" alt="Your Image" style={{ width: '300px', height: '300px', borderRadius: '6px' }} />
-                            <br></br>
-                            <br></br>
-                            <h4><strong>Documents Required</strong></h4>
-                            <br></br>
 
-                            <div className="grid text-center">
-                                <div className="g-col-6" style={{ borderRadius: '5px' }}><strong>Age Proof</strong></div>
-                                <br></br>
-                                <div className="g-col-6" style={{ borderRadius: '5px' }}><strong>Address Proof</strong></div>
+                        <div className="tab-pane fade text-center" id="list-passport" role="tabpanel" aria-labelledby="list-passport-list">
+                            <div className="card" role='tabpanel' aria-labelledby='list-passport-list'>
+                                <h5 className="card-title-center"> </h5>
+                                <p className="card-text-center"><strong>
+                                    How to apply for a passport online in India</strong><br></br><br></br>
+                                    Here are different steps to apply online for a passport in India.<br></br><strong>
 
-                                <br></br>
-                                <div className="g-col-6" style={{ borderRadius: '5px' }}><strong>Identity Proof</strong></div>
-                            </div>
-                        </div>
-                    </div>
-                )}
-                {selectedContent === "PAN Card" && (
-                    <div>
-                        <div className="steps-card" style={{ width: "1200px" }}>
+                                        1. Log in to the Passport Seva portal</strong><br></br>
+                                    First of all, you need to log in to your Passport Seva website account.<br></br><strong>
 
-                            <div className="card-header" style={{ height: '50px' }}>
-                                <h3><strong> PAN Card Application Process</strong></h3>
-                            </div>
+                                        Step 1:</strong> Visit the Passport Seva platform online and click on “New User Registration” or “Existing User Login”, based on your registration status.<br></br><strong>
 
-                            {/* Step 1 */}
-                            <div className="step" style={{ height: '55px' }}>
+                                        Step 2: </strong>As a new user, you can follow the registration process. (Existing users can move to the next step.)<br></br><strong>
 
-                                <p><strong> Step 1:</strong> Visit the website of NSDL or UTIITSL for online application for PAN card</p>
-                            </div>
+                                        Step 3:</strong> Use your credentials (password and login ID) and complete captcha verification to log in. <br></br><strong>
 
-                            {/* Step 2 */}
-                            <div className="step" style={{ height: '55px' }}>
+                                        2. Select a type of passport application</strong><br></br>
+                                    Once you are logged in, select among the following options for the passport application process.<br></br>
 
-                                <p> <strong>Step 2:</strong>Select the option ‘New PAN’
-                                </p>
-                            </div>
+                                    Fresh passport or Reissue of passport<br></br>
 
-                            {/* Step 3 */}
-                            <div className="step" style={{ height: '70px' }}>
+                                    Official passport or diplomatic passport<br></br><strong>
 
-                                <p><strong>Step 3:</strong>Choose the PAN card form 49A which should be selected for individuals whether they are Indian citizens, NRE/NRI or OCI individuals</p>
-                            </div>
-                            <div className="step" style={{ height: '65px' }}>
+                                        3. Fill out your online application</strong> <br></br>
+                                    Here are the passport application steps you need to follow online.<br></br><strong>
 
-                                <p><strong>Step 4:</strong>This form should be filled with the individual’s details </p>
-                            </div>
-                            <div className="step" style={{ height: '70px' }}>
+                                        Step 1: </strong>Click on the type of passport application you want to apply for.<br></br><strong>
 
-                                <p><strong>Step 5:</strong>The applicant would also be required to pay the processing fee online or through a demand draft after submitting the form to initiate the processing of the form</p>
-                            </div>
-                            <div className="step" style={{ height: '70px' }}>
+                                        Step 2:</strong> Fill in the requested details accurately.<br></br><strong>
 
-                                <p><strong>Step 6:</strong>After paying the fees and submitting the PAN Form 49A, an acknowledgement slip is generated containing the 15-digit acknowledgement number</p>
-                            </div>
-                            <div className="step" style={{ height: '85px' }}>
+                                        Step 3:</strong> Check all details carefully and hit the “Submit” button.<br></br>
 
-                                <p><strong>Step 7:</strong>You can e-Sign the application using Aadhaar OTP authentication or send the application with required documents to the NSDL PAN office or UTIITSL office by courier within 15 days of online submission of Form 49A
-                                </p>
-                            </div>
-                            <div className="step" style={{ height: '105px' }}>
+                                    4. Pay the fees and schedule an appointment<br></br><br></br><strong>
+                                        After submitting your online application, the following steps will help you pay the necessary fees and schedule an appointment.</strong> <br></br><strong>
 
-                                <p><strong>Step 8:</strong>After the acknowledgement form is couriered to the concerned office, PAN no. verification is done and the card is generated after the NSDL/UTIITSL PAN verification. The physical PAN card is sent to the customer’s address as mentioned in the form within a period of 15 days.
+                                        Step 1:</strong> Head back to the home page to select the option “View Saved/Submitted Applications”.<br></br><strong>
+
+                                        Step 2:</strong> Now, choose the option “Pay and Schedule Appointment” among all choices visible on your screen.<br></br><strong>
+
+                                        Step 3:</strong> Select the PSK or Passport Seva Kendra and schedule an appointment.<br></br><strong>
+
+                                        Step 4:</strong> Pay the requested fees for the process through the online payment mode of your choice.<br></br><strong>
+
+                                        Step 5:</strong> Take a printout of the application receipt or refer to the SMS sent to your mobile phone containing your Application Reference Number (ARN).<br></br>
+
+                                    Finally, you can pay a visit to the selected PSK on the date and time of your appointment, carrying all the original documents for verification.<br></br><br></br><strong>
+
+                                        Documents required for online passport application</strong><br></br>
+                                    An applicant needs to submit the below-mentioned documents for a new passport application online or offline.<br></br>
+
+                                    Proof of address (Such as Aadhaar card, utility bill, rent agreement, etc.)<br></br>
+
+                                    Proof of age (Such as Aadhaar card, Birth Certificate, PAN card, Voter ID etc.)<br></br>
+
+                                    Non-ECR (Emigration Check Not Required) documentary proof (if applicable)
                                 </p>
                             </div>
                         </div>
-                        <div className="image-card" style={{ position: 'absolute', left: '110px', top: '220px' }}>
-                            <img src="https://mybillbook.in/blog/wp-content/uploads/2022/07/pan-card.png" alt="Your Image" style={{ width: '300px', height: '300px', borderRadius: '6px' }} />
-                            <br></br>
-                            <br></br>
+                        <div className="tab-pane fade text-center" id="list-license" role="tabpanel" aria-labelledby="list-license-list">
+                        <div className="card" role='tabpanel' aria-labelledby='list-license-list'>
+                            <h5 className="card-title-center"> </h5>
+                            <p className="card-text-center"><strong>Steps to follow for New Driving License :-</strong>
+                                1. Visit https://sarathi.parivahan.gov.in/<br></br>
+                                2. Select concerned statev<br></br>
+                                3. Click on "New Driving Licence" from "Driving Licence" menu<br></br>
+                                4. Enter your "Learning License Number" & "Date of Birth" to proceed further<br></br>
+                                5. Fill up application Form<br></br>
+                                6.Click on Next Button to proceed<br></br>
+                                7. Visit RTO on scheduled date with original documents & Fee Slip
 
-                            <h4><strong>Documents Required</strong></h4>
-                            <br></br>
-
-                            <div className="grid text-center">
-                                <div className="g-col-6" style={{ borderRadius: '5px' }}><strong>Identity Proof</strong></div>
-                                <br></br>
-
-                                <div className="g-col-6" style={{ borderRadius: '5px' }}><strong>Address Proof</strong></div>
-                                <br></br>
-
-                                <div className="g-col-6" style={{ borderRadius: '5px' }}><strong>Birth Certificate</strong></div>
-                                <br></br>
-
-
-
-                            </div>
+                                Log in to post comments<br></br><br></br><strong>
+                                    A duplicate driving licence will be issued in the following circumstances</strong><br></br>
+                                1.When the licence is lost or destroyed<br></br>
+                                2.When the licence is defaced or torn or completely written up<br></br>
+                                3.When the photograph affixed to the licence requires replacement<br></br><br></br><strong>
+                                    Age limit to obtain Driving Licence</strong><br></br>
+                                1.An applicant who has completed sixteen years of age is eligible to apply for a driving licence to drive a motor cycle without gear subject to the condition that the parent or guardian should furnish a declaration in the manner prescribed.<br></br>
+                                2.The applicant who has completed the age of eighteen years of age is eligible to apply for a driving licence to drive a motor vehicle other than a transport vehicle.<br></br>
+                                3.An applicant who has completed twenty years of age will be eligible for applying for a licence to drive a transport vehicle.<br></br>
+                                <strong>Documents Required</strong><br></br>
+                                Valid Address Proof (Aadhaar Card, Passport, Election Voter ID Card, Telephone Bill, Bank Passbook, Gas connection bill etc.,)<br></br>
+                                Valid Date of Birth Proof (Educational Certificate showing date of birth, Passport, Birth Certificate Issued by Authorised Authority like GHMC, Municipality etc.,)<br></br>
+                                Application in Form No.2.<br></br>
+                                Form No. 1(Self declaration as to the physical fitness for Non- Transport vehicles only).<br></br>
+                                Form No. 1 A (Medical Certificate-for Transport category Vehicles / for the applicant above the age of 40 Years).<br></br>
+                                Fees as prescribed Under Rule 32 of CMV Rules ,1989 along with user charges.</p>
                         </div>
-
+                        </div>
                     </div>
-                )}
-
-
-
-
-            </>
-        </div>
-    );
-}
+                </div>
+            </div>
+            </div>
+        </>
+    )
+};
