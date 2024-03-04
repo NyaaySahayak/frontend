@@ -7,12 +7,12 @@ export default function VoiceAssistant(props) {
   const jsonData = props.data;
   const [searchText, setSearchText] = useState('');
   const [repeatButton, setRepeatButton] = useState(true);
-  const [inputSource, setInputSource] = useState('');
+  const [inputSource, setInputSource] = useState('text');
 
   const handleSearch = () => {
-    findanswer(searchText);
+    setInputSource('text');
     setRepeatButton(true);
-    setInputSource('text'); 
+    findanswer(searchText);
   };
 
   const { transcript, listening, resetTranscript, isMicrophoneAvailable, browserSupportsSpeechRecognition } = useSpeechRecognition({ onEnd: () => submit() });
@@ -51,18 +51,18 @@ export default function VoiceAssistant(props) {
         }
       }
       else {
-        console.log("No matching answer found for the given question.");
-        newtranscript("No matching answer found for the given question.");
+        console.log("Unfortunately, I couldn't find a relevant answer to your query.");
+        newtranscript("Unfortunately, I couldn't find a relevant answer to your query.");
         if (inputSource === 'voice') { // Speak only if input was voice
-          speak({ text: "No matching answer found for the given question." });
+          speak({ text: "Unfortunately, I couldn't find a relevant answer to your query." });
         }
       }
     }
     else {
-      console.log("No questions found in the JSON data.");
-      newtranscript("No questions found in the JSON data.");
+      console.log("Unfortunately, I couldn't find a relevant answer to your query.");
+      newtranscript("Unfortunately, I couldn't find a relevant answer to your query.");
       if (inputSource === 'voice') { // Speak only if input was voice
-        speak({ text: "No matching answer found for the given question." });
+        speak({ text: "Unfortunately, I couldn't find a relevant answer to your query." });
       }
     }
   }

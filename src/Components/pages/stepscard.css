@@ -1,50 +1,70 @@
-.steps-container{
-    display: flex;
-    position: relative;
-      left:'100px';
+.steps-container {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 20px; /* Add padding for better spacing */
+  max-width: 1200px;
+}
+
+.steps-card {
+  width: 100%;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card-header {
+  background-color: steelblue;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+.step {
+  padding: 16px;
+  border-bottom: 1px solid #ddd;
+}
+
+.step:last-child {
+  border-bottom: none;
+}
+
+.image-card {
+  position: relative;
+  text-align: center;
+}
+
+.image-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+.image-card h4 {
+  margin-top: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 10px;
+}
+
+.g-col-6 {
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: salmon;
+}
+
+@media (max-width: 768px) {
+  .steps-container {
+    flex-direction: column;
+    align-items: center;
   }
-    
-    .steps-card {
-    
-       /* Adjust the margin as needed */
-      max-width: 800px;
-      margin: auto;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      overflow: hidden;
-      position:absolute;
-      right: 110px;
-     
   
-      
-    }
-  
-    
-    .card-header {
-      background-color:steelblue;
-      color: #fff;
-      padding: 10px;
-      text-align: center;
-    
-    }
-    
-    .step {
-      padding: 16px;
-      border-bottom: 1px solid #ddd;
-    }
-    
-    .step:last-child {
-      border-bottom: none;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr); /* Two columns */
-      gap: 10px; /* Adjust the gap as needed */
-    }
-    
-    .g-col-6 {
-      grid-column: span 6; /* Each item spans 6 columns */
-      padding: 10px;
-      border: 1px solid #ccc;
-      background-color:salmon;
-    }
+  .image-card {
+    width: 100%; /* Ensure image cards take full width on smaller screens */
+    margin-bottom: 20px; /* Add margin between image cards */
+  }
+}
