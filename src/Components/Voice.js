@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import char from '../Components/images/char.png';
 import { useSpeechSynthesis } from 'react-speech-kit';
@@ -7,10 +7,18 @@ export default function VoiceAssistant(props) {
   const jsonData = props.data;
   const [searchText, setSearchText] = useState('');
   const [repeatButton, setRepeatButton] = useState(true);
-  const [inputSource, setInputSource] = useState('text');
+  const [inputSource, setInputSource] = useState('voice');
+
+  useEffect(() => {
+    console.log("Input Source:", inputSource);
+    if (inputSource === 'voice') { // Speak only if input was voice
+      speak({ text: mytranscript });
+    }
+  }, [inputSource]);
 
   const handleSearch = () => {
     setInputSource('text');
+    console.log(inputSource)
     setRepeatButton(true);
     findanswer(searchText);
   };
@@ -46,24 +54,22 @@ export default function VoiceAssistant(props) {
       if (bestMatchQuestion) {
         console.log("Answer: ", bestMatchQuestion.answer);
         newtranscript(bestMatchQuestion.answer);
-        if (inputSource === 'voice') { // Speak only if input was voice
-          speak({ text: bestMatchQuestion.answer });
-        }
+        
       }
       else {
         console.log("Unfortunately, I couldn't find a relevant answer to your query.");
         newtranscript("Unfortunately, I couldn't find a relevant answer to your query.");
-        if (inputSource === 'voice') { // Speak only if input was voice
-          speak({ text: "Unfortunately, I couldn't find a relevant answer to your query." });
-        }
+        // if (inputSource === 'voice') { // Speak only if input was voice
+        //   speak({ text: "Unfortunately, I couldn't find a relevant answer to your query." });
+        // }
       }
     }
     else {
       console.log("Unfortunately, I couldn't find a relevant answer to your query.");
       newtranscript("Unfortunately, I couldn't find a relevant answer to your query.");
-      if (inputSource === 'voice') { // Speak only if input was voice
-        speak({ text: "Unfortunately, I couldn't find a relevant answer to your query." });
-      }
+      // if (inputSource === 'voice') { // Speak only if input was voice
+      //   speak({ text: "Unfortunately, I couldn't find a relevant answer to your query." });
+      // }
     }
   }
 
@@ -90,9 +96,10 @@ export default function VoiceAssistant(props) {
     if (!listening) {
       return null;
     } else {
+      setInputSource('voice'); 
+      console.log(inputSource);
       setRepeatButton(true);
       findanswer(transcript);
-      setInputSource('voice'); 
     }
   }
 

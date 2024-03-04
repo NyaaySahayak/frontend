@@ -37,8 +37,8 @@ export default function Guides() {
                         {selectedContent === "Passport" &&
                             (
                                 <div>
-                                    <div class="row">
-                                        <div class="col-md-4">
+                                    <div className="row">
+                                        <div className="col-md-4">
                                             <div className="image-card" style={{ position: 'absolute', left: '110px', top: '230px' }}>
                                                 <img src="https://wallpapers.com/images/hd/passport-pictures-huctncquz2fzv1ht.jpg" alt="Passport" style={{ width: '300px', height: '300px', borderRadius: '6px' }} />
                                                 <br></br>
@@ -57,7 +57,7 @@ export default function Guides() {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-8">
+                                        <div className="col-md-8">
                                             <div className="steps-card"  >
                                                 <div className="card-header" style={{ height: '50px' }}>
                                                     <h2 style={{ fontStyle: 'oblique' }}><strong> Passport Application Process</strong></h2>
@@ -100,8 +100,8 @@ export default function Guides() {
                             )}
                         {selectedContent === "Aadhar card" && (
                             <div>
-                                <div class="row">
-                                    <div class="col-md-4">
+                                <div className="row">
+                                    <div className="col-md-4">
                                         <div className="image-card" style={{ position: 'absolute', left: '110px', top: '230px' }}>
                                             <img src="https://aadhaarcard.co.in/wp-content/uploads/2023/04/aadhaar-card.webp" alt="Aadhar" style={{ width: '300px', height: '300px', borderRadius: '6px' }} />
                                             <br></br>
@@ -117,7 +117,7 @@ export default function Guides() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-8">
+                                    <div className="col-md-8">
                                         <div className="steps-card">
                                             <div className="card-header" style={{ height: '50px' }}>
                                                 <h2><strong>How to apply for Aadhar card ?</strong></h2>
@@ -164,8 +164,8 @@ export default function Guides() {
                 )}
                 {selectedContent === "License" && (
                     <div>
-                        <div class="row">
-                            <div class="col-md-4">
+                        <div className="row">
+                            <div className="col-md-4">
                                 <div className="image-card" style={{ position: 'absolute', left: '110px', top: '220px' }}>
                                     <img src="https://www.godigit.com/content/dam/godigit/directportal/en/contenthm/telangana-driving-licence.jpg" alt="License" style={{ width: '300px', height: '300px', borderRadius: '6px' }} />
                                     <br></br>
@@ -179,7 +179,7 @@ export default function Guides() {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-8">
+                            <div className="col-md-8">
                                 <div className="steps-card" style={{ width: "1200px" }}>
                                     <div className="card-header" style={{ height: '50px' }}>
                                         <h3><strong>Steps to follow for New Driving License</strong></h3>
@@ -217,8 +217,8 @@ export default function Guides() {
                 )}
                 {selectedContent === "Voter ID" && (
                     <div>
-                        <div class="row">
-                            <div class="col-md-4">
+                        <div className="row">
+                            <div className="col-md-4">
                                 <div className="image-card" style={{ position: 'absolute', left: '110px', top: '220px' }}>
                                     <img src="https://5.imimg.com/data5/SELLER/Default/2023/7/326236311/DG/UC/NY/147613454/613b4fe5118d68e33daead1f-5f9ce9d6b395d08d26991e6e-voter-id-2x-min.jpg" alt="Voter" style={{ width: '300px', height: '300px', borderRadius: '6px' }} />
                                     <br></br>
@@ -236,7 +236,7 @@ export default function Guides() {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-8">
+                            <div className="col-md-8">
                                 <div className="steps-card">
                                     <div className="card-header" style={{ height: '50px' }}>
                                         <h3><strong>How to Apply for Voter ID Card ?</strong></h3>
@@ -285,8 +285,8 @@ export default function Guides() {
                 )}
                 {selectedContent === "PAN Card" && (
                     <div>
-                        <div class="row">
-                            <div class="col-md-4">
+                        <div className="row">
+                            <div className="col-md-4">
                                 <div className="image-card" style={{ position: 'absolute', left: '110px', top: '220px' }}>
                                     <img src="https://mybillbook.in/blog/wp-content/uploads/2022/07/pan-card.png" alt="PAN" style={{ width: '300px', height: '300px', borderRadius: '6px' }} />
                                     <br></br>
@@ -310,7 +310,7 @@ export default function Guides() {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-8">
+                            <div className="col-md-8">
                                 <div className="steps-card" style={{ width: "1200px" }}>
 
                                     <div className="card-header" style={{ height: '50px' }}>

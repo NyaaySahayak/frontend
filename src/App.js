@@ -8,7 +8,6 @@ import About from './Components/pages/About';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Awareness from './Components/pages/Awareness';
-import Chatbot from './Components/ChatBot/Chatbot';
 import LoginPage from './Components/pages/LoginPage';
 import AdvocateDashBoard from './Components/advocate/AdvocateDashBoard';
 import AdminDasboard from './Components/admin/AdminDasboard';
@@ -67,7 +66,6 @@ function App() {
       <Navbar/>
       {loading && <Spinner/>}
       {shouldShowBreadcrumbBar && <BreadcrumbBar location={location} />}
-      <Chatbot />
       <Routes>
         <Route index element={<VoiceAssistant data={jsonData}/>}/>
         <Route path='About' element={<About/>}/>

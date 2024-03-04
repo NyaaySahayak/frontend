@@ -25,7 +25,7 @@ function Navbar() {
   }
 
   return (
-    <div>
+    <div style={{position:'sticky',top:'0',zIndex:'1000'}}>
       {!login && (
         <>
           <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -77,7 +77,7 @@ function Navbar() {
       )}
       {
         login && (
-          <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
+          <nav className="navbar navbar-expand-sm navbar-dark bg-dark" >
             <div className="container-fluid">
               <Link className="navbar-brand mx-auto" to={`/${user.role === "admin" ? "admin":"advocate"}/dashboard`}>
                 NYAAY SAHAYAK
