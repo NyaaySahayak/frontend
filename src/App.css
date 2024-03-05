@@ -4,17 +4,6 @@
 } */
 
 
-.react-chatbot-kit-chat-container {
-    margin-left: 31%; 
-    width: 500px !important;
-  }
-  .react-chatbot-kit-chat-bot-message {
-    margin-left: 0 !important;
-  }
-
-  
-
-
   .selection {
     margin: 20px;
     padding: 20px;
@@ -50,7 +39,7 @@ label {
     border-radius: 20px;
     background-color: #fff;
     font-size: 14px;
-}
+} 
 
 
   

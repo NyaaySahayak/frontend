@@ -82,7 +82,7 @@ function App() {
         </Route>
 
         <Route path='/advocate' element={<AdvocatePrivateRoute/>}>
-          <Route path='dashboard/' element={<AdvocateDashBoard jsonData={jsonData} setchangesInData={setchangesInData} loading={loading} changesInData={changesInData} />}/>
+          <Route path='dashboard' element={<AdvocateDashBoard jsonData={jsonData} setchangesInData={setchangesInData} loading={loading} changesInData={changesInData} />}/>
         </Route>
         
         <Route path="*" element={<Navigate to="pagenotfound" />} />
