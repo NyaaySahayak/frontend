@@ -1,4 +1,4 @@
-import React, { useState , useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import char from '../Components/images/char.png';
 import { useSpeechSynthesis } from 'react-speech-kit';
@@ -10,7 +10,7 @@ export default function VoiceAssistant(props) {
   const [inputSource, setInputSource] = useState('voice');
 
   useEffect(() => {
-    console.log("Input Source:", inputSource);
+    // console.log("Input Source:", inputSource);
     if (inputSource === 'voice' || inputSource === 'voice1') { // Speak only if input was voice
       speak({ text: mytranscript });
     }
@@ -18,12 +18,11 @@ export default function VoiceAssistant(props) {
 
   const handleSearch = () => {
     setInputSource('text');
-    console.log(inputSource)
     setRepeatButton(true);
     findanswer(searchText);
   };
 
-  const { transcript, listening, resetTranscript, isMicrophoneAvailable, browserSupportsSpeechRecognition } = useSpeechRecognition({ onEnd: () => submit() });
+  const { transcript, listening, resetTranscript, browserSupportsSpeechRecognition } = useSpeechRecognition({ onEnd: () => submit() });
   const [mytranscript, newtranscript] = useState(transcript);
   const { speak } = useSpeechSynthesis();
 
@@ -88,9 +87,9 @@ export default function VoiceAssistant(props) {
       return null;
     } else {
       if (inputSource === 'voice') {
-        setInputSource('voice1'); 
-      }else{
-        setInputSource('voice'); 
+        setInputSource('voice1');
+      } else {
+        setInputSource('voice');
       }
       console.log(inputSource);
       setRepeatButton(true);
@@ -109,12 +108,12 @@ export default function VoiceAssistant(props) {
 
   return (
     <>
-       <div className='container-fluid'>
-        <div className="row" style={{background: "linear-gradient(90deg, rgba(0,120,183,1) 0%, rgba(7,24,68,1) 100%)"}}>
+      <div className='container-fluid'>
+        <div className="row" style={{ background: "linear-gradient(90deg, rgba(0,120,183,1) 0%, rgba(7,24,68,1) 100%)" }}>
           <div className="col-lg-4 col-md-6 col-sm-12 d-flex flex-column align-items-center justify-content-center" style={{ minHeight: "85vh" }}>
-            
+
             {/* Adjusted the image size here */}
-            <img src={char} alt='our char' className="img-fluid" style={{ maxWidth: '90vw' }}/>
+            <img src={char} alt='our char' className="img-fluid" style={{ maxWidth: '90vw' }} />
             <div className="text-center">
               <button className="btn btn-success" onClick={clicks} style={{ borderRadius: '50%', marginRight: '10px' }}>
                 {listening ? <span className="material-symbols-outlined" style={{ fontSize: '4  5px' }}>
@@ -124,15 +123,15 @@ export default function VoiceAssistant(props) {
                 </span>}
               </button>
 
-              <button className="btn btn-warning" onClick={reset} style={{ borderRadius: '50%'}}>
+              <button className="btn btn-warning" onClick={reset} style={{ borderRadius: '50%' }}>
                 <span className="material-symbols-outlined" style={{ fontSize: '45px' }}>refresh</span>
               </button>
 
             </div>
           </div>
           <div className="col-lg-8 col-md-6 col-sm-12 d-flex flex-column align-items-center justify-content-center" style={{ minHeight: "95vh" }}>
-            
-          <div className="input-group" style={{ width: '100%', maxWidth: '450px', margin: '10px' }}>
+
+            <div className="input-group" style={{ width: '100%', maxWidth: '450px', margin: '10px' }}>
               <input
                 type="text"
                 className="form-control"
@@ -159,7 +158,9 @@ export default function VoiceAssistant(props) {
                   <>
                     {mytranscript}
                     {repeatButton && <div className="d-grid gap-2 col-2 mx-auto text-center position-absolute bottom-0 end-0">
-                      <button className="btn btn-primary" onClick={() => speak({ text: mytranscript })} type="button">Repeat</button>
+                      <button className="btn btn-primary"  onClick={() => speak({ text: mytranscript })} type="button">S<span class="material-symbols-outlined">
+                        text_to_speech
+                      </span></button>
                     </div>}
                   </>
                 ) : (<></>)}
