@@ -11,7 +11,7 @@ export default function VoiceAssistant(props) {
 
   useEffect(() => {
     console.log("Input Source:", inputSource);
-    if (inputSource === 'voice') { // Speak only if input was voice
+    if (inputSource === 'voice' || inputSource === 'voice1') { // Speak only if input was voice
       speak({ text: mytranscript });
     }
   }, [inputSource]);
@@ -54,31 +54,22 @@ export default function VoiceAssistant(props) {
       if (bestMatchQuestion) {
         console.log("Answer: ", bestMatchQuestion.answer);
         newtranscript(bestMatchQuestion.answer);
-        
       }
       else {
         console.log("Unfortunately, I couldn't find a relevant answer to your query.");
         newtranscript("Unfortunately, I couldn't find a relevant answer to your query.");
-        // if (inputSource === 'voice') { // Speak only if input was voice
-        //   speak({ text: "Unfortunately, I couldn't find a relevant answer to your query." });
-        // }
       }
     }
     else {
       console.log("Unfortunately, I couldn't find a relevant answer to your query.");
       newtranscript("Unfortunately, I couldn't find a relevant answer to your query.");
-      // if (inputSource === 'voice') { // Speak only if input was voice
-      //   speak({ text: "Unfortunately, I couldn't find a relevant answer to your query." });
-      // }
     }
   }
 
   if (!browserSupportsSpeechRecognition) {
     return null;
   }
-  if (!isMicrophoneAvailable) {
-    // alert('MicroPhone access is denied');
-  }
+
   function check() {
     if (listening) {
       SpeechRecognition.stopListening();
@@ -96,7 +87,11 @@ export default function VoiceAssistant(props) {
     if (!listening) {
       return null;
     } else {
-      setInputSource('voice'); 
+      if (inputSource === 'voice') {
+        setInputSource('voice1'); 
+      }else{
+        setInputSource('voice'); 
+      }
       console.log(inputSource);
       setRepeatButton(true);
       findanswer(transcript);
